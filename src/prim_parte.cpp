@@ -28,6 +28,12 @@ struct Repuesto {
 void leerClientes() {
     ifstream archivo("bin/datos/clientes.csv");
     string cliente;
+
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo de clientes.\n";
+        return;
+    }
+    
     cout << "Datos de Clientes:";
     cout<< endl;
     while (getline(archivo, cliente)) {
@@ -57,8 +63,8 @@ void agregarCliente() {
     cin >> cl.activo;
 
     ofstream archivo("bin/datos/clientes.csv", ios::app);
-    archivo << cl.cedula << "," << cl.nombre << "," << cl.apellido << "," << cl.email << "," << cl.cantidad_vehiculos_rentados 
-    << "," << cl.direccion << "," << cl.activo << endl;
+    archivo << cl.cedula << "\t" << cl.nombre << "\t" << cl.apellido << "\t" << cl.email << "\t" << cl.cantidad_vehiculos_rentados 
+    << "\t" << cl.direccion << "\t" << cl.activo << endl;
     archivo.close();
     cout << "Cliente agregado.";
     cout << endl;
@@ -66,6 +72,6 @@ void agregarCliente() {
 
 
 int main(){
-    
+
     return 0;
 }
