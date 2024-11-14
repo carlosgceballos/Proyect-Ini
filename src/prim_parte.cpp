@@ -23,4 +23,8 @@ struct Repuesto {
     float precio;
 };
 
-//hacer funciones para almacenar y leer los respectivos datos
+int main(){
+
+
+    return 0;
+}
