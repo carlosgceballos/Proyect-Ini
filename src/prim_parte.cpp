@@ -70,8 +70,34 @@ void agregarCliente(){
     cout << endl;
 }
 
-// funcion para leer vehiculos
+//funcion consulta de clientes
+void ConsCl(){
+    ifstream archivo("bin/datos/clientes.csv");
+    string cliente, cedulaBuscar;
 
+    if (!archivo.is_open()){
+        cout<< "No se pudo acceder al archivo."<<endl;
+        return;
+    }
+    cout<<"Ingrese la cedula del cliente: ";
+    cin>> cedulaBuscar;
+
+    bool encontrado = false;
+    while(getline(archivo, cliente)){
+        size_t posi = cliente.find(cedulaBuscar);
+        if(posi != string::npos && posi == 0){// posi == 0 porque la cedula esta al principio de la linea
+            cout << cliente<<endl;
+            encontrado = true;
+            break;
+        }
+    }
+    if (!encontrado){
+        cout<<"No se encontro un cliente con la cedula proporcionada.";
+    }
+    archivo.close();
+}
+
+// funcion para leer vehiculos
 void leerVehiculos(){
     ifstream archivo("bin/datos/vehiculos.csv");
     string Vehiculo;
@@ -83,7 +109,6 @@ void leerVehiculos(){
 }
 
 // Funcion para agregar Vehiculos
-
 void agregarVehiculo(){
     Vehiculo vehi;
     cout << "Ingrese los datos del vehiculo:\n";
@@ -155,7 +180,6 @@ void borrarDatos(){
 }
 
 int main(){
-
     int opcion;
     do{
         cout <<"1. Agregar Cliente:\n";
