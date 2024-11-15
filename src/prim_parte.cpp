@@ -309,7 +309,7 @@ void consultaVehiculo(){
 
     while(getline(archivo, vehiculos)){
         size_t posi = vehiculos.find(Placa);
-        if(posi !=string::npos && posi == 7){
+        if(posi !=string::npos && posi == 0){
             cout << vehiculos << endl;
             encontrado = true;
             break;
@@ -317,6 +317,50 @@ void consultaVehiculo(){
     }
     if(!encontrado){
         cout << "No se encontro el vehiculo con la placa especificada." << endl;
+    }
+    archivo.close();
+
+}
+//Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
+
+void consultaRepuesto(){
+    ifstream archivo("bin/datos/vehiculos.cvs");
+    string Repuesto, nombreBuscar;
+    modeloCarroBuscar;
+    int anioCarroBuscar;
+    bool encontrado = false;
+    if(!archivo.is_open()){
+        cout << "No se pudo abrir el archivo de repuestos.\n";
+        return;
+
+    }
+    //Solicitar los datos de busqueda
+    cout << "Ingrese el nombre del repuesto que desea buscar:";
+    cin >> nombreBuscar;
+    cout << "Ingrese el modelo del carro asociado al repuesto:";
+    cin >> modeloCarroBuscar;
+    cout << "Ingrese el año del carro asociado al repuesto:";
+    cin >> anioCarroBuscar;
+
+    //Recorrer el archivo linea por linea 
+    while(getline(archivo, Repuesto)){
+        //verificar si todos los criterios estan en la linea actual
+        size_t posNombre =
+        Repuesto.find("Nombre:" + nombreBuscar);
+        size_t posModeloCarro =
+        Repuesto.find("Modelo de carro:" + modeloCarroBuscar);
+        size_t posAnioCarro = Repuesto.find("Year del carro:" + to_string(anioCarroBuscar));
+
+        //Comprobar que todos los criterios coincidan
+        if(posNombre != string::npos&& posModeloCarro != string::npos&& posAnioCarro != string::npos){
+            cout << "Repuesto encontrado:\n"; 
+            cout << Repuesto << endl;
+            encontrado = true;
+            break;
+        }
+    }
+    if(!encontrado){
+        cout << "No se encontro un repuesto con los datos especificados.\n";
     }
     archivo.close();
 }
