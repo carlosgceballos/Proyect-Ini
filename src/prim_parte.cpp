@@ -5,15 +5,15 @@
 using namespace std;
 
 struct Vehiculo{
-  string modelo, marca, placa, color, motor, ced_cliente, fecha_entrega;
-  int year, kilometraje;
+  string modelo, marca, placa, color, motor, fecha_entrega;
+  int year, kilometraje, ced_cliente;
   bool rentado;
   float precio_renta;
 };
 
 struct Cliente {
-    string cedula, nombre, apellido, email, direccion;
-    int cantidad_vehiculos_rentados;
+    string nombre, apellido, email, direccion;
+    int cantidad_vehiculos_rentados, cedula;
     bool activo;
 };
 
@@ -111,7 +111,7 @@ void agregarVehiculo(){
     cin >> vehi.fecha_entrega;
     
     ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
-    archivo << vehi.modelo << "/t" << vehi.marca << "/t" << vehi.placa << "/t"<< vehi.color << "/t" << vehi.year << "/t" << vehi.kilometraje << "/t" << vehi.rentado << "/t" << vehi.motor << "/t" << vehi.precio_renta << "/t" << vehi.ced_cliente << "/t" << vehi.fecha_entrega << endl;
+    archivo << vehi.modelo << "\t" << vehi.marca << "\t" << vehi.placa << "\t"<< vehi.color << "\t" << vehi.year << "\t" << vehi.kilometraje << "\t" << vehi.rentado << "\t" << vehi.motor << "\t" << vehi.precio_renta << "\t" << vehi.ced_cliente << "\t" << vehi.fecha_entrega << endl;
     archivo.close();
     cout << "Vehiculo agregado.\n";
 
@@ -136,8 +136,8 @@ void agregarRepuesto(){
     cin>>re.existencias;
 
     ofstream archivo("bin/datos/repuestos.cvs", ios::app);
-    archivo<< re.nombre<<"/t"<<re.marca<<"/t"<<re.modelo<<"/t"<<re.modelo_carro<<"/t"<<re.anio_carro<<"/t"
-    <<re.precio<<"/t"<<re.existencias<<endl;
+    archivo<< re.nombre<<"\t"<<re.marca<<"\t"<<re.modelo<<"\t"<<re.modelo_carro<<"\t"<<re.anio_carro<<"\t"
+    <<re.precio<<"\t"<<re.existencias<<endl;
     archivo.close();
 
     cout<<"Repuesto agregado";
