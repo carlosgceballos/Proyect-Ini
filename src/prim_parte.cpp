@@ -23,6 +23,101 @@ struct Repuesto {
     float precio;
 };
 
+//funcion para borrar registros de vehiculos y clientes
+void borrarRegistro(const string& archivoOriginal, const string& identificador) {
+    ifstream archivo(archivoOriginal);
+    ofstream archivoTemp("bin/datos/temp.csv");
+    string aborrar;
+    bool encontrado = false;
+
+    if (!archivo.is_open() || !archivoTemp.is_open()) {
+        cout << "No se pudo abrir el archivo para borrado.\n";
+        return;
+    }
+
+    // Copiar todas las líneas, excepto la que contiene el identificador al archivo temporal
+    while (getline(archivo, aborrar)) {
+        if (aborrar.find(identificador) == string::npos) {
+            archivoTemp << aborrar << endl;  // Copia la línea al archivo temporal si no coincide
+        } else {
+            encontrado = true;  // Marca que el registro fue encontrado y omitido
+        }
+    }
+
+    archivo.close();
+    archivoTemp.close();
+
+    //verificar que se quiere confirmar el cambio
+    int confirmar;
+    if (encontrado) {
+        cout<<"Confirme que desea realizar un cambio en el documento: (1 para confirmar, 0 para cancelar)";
+        cin>> confirmar;
+        if(confirmar ==  1){
+        remove(archivoOriginal.c_str());           // Elimina el archivo original
+        rename("bin/datos/temp.csv", archivoOriginal.c_str());  // Renombra el temporal al nombre original
+        cout << "Registro borrado exitosamente.\n";
+        }else{
+            cout << "Operación cancelada. No se realizó ningún cambio.\n";
+            remove("bin/datos/temp.csv");
+        }
+        }else{
+        cout << "No se encontró un registro con el identificador especificado.\n";
+        remove("bin/datos/temp.csv");  // Elimina el archivo temporal si no se encontró el registro
+        }   
+}
+
+//funcion para borrar registro de repuestos
+void borrarRepuesto(){
+    string nombreRepuesto, modeloCarro;
+    int anioCarro;
+    cout << "Ingrese el nombre del repuesto que desea borrar: ";
+    cin >> nombreRepuesto;
+    cout << "Ingrese el modelo del carro al que pertenece el repuesto: ";
+    cin >> modeloCarro;
+    cout << "Ingrese el año del carro al que pertenece el repuesto: ";
+    cin >> anioCarro;
+
+    ifstream archivo("bin/datos/repuestos.csv");
+    ofstream archivoTemp("bin/datos/temp.csv");
+    string linea;
+    bool encontrado = false;
+
+    if (!archivo.is_open() || !archivoTemp.is_open()) {
+        cout << "No se pudo abrir el archivo para borrado.\n";
+        return;
+    }
+
+    // Copiar todas las líneas, excepto la que coincide al archivo temporal
+    while (getline(archivo, linea)) {
+        if (linea.find(nombreRepuesto) != string::npos && linea.find(modeloCarro) != string::npos && linea.find(to_string(anioCarro)) != string::npos) {
+            // Si todos los criterios coinciden, se omite la línea 
+            encontrado = true;
+        } else {
+            archivoTemp << linea << endl;
+        }
+    }
+
+    archivo.close();
+    archivoTemp.close();
+
+    // Reemplazar el archivo original con el archivo temporal si se encontró el registro
+    int confirmar;
+    if (encontrado) {
+        cout<<"Confirme que desea borrar el registro: (1 para confirmar, 0 para cancelar)";
+        cin>>confirmar;
+        if(confirmar==1){
+        remove("bin/datos/repuestos.csv");           
+        rename("bin/datos/temp.csv", "bin/datos/repuestos.csv");  
+        cout << "Repuesto borrado exitosamente.\n";
+        }else{
+            cout << "Operación cancelada. No se realizó ningún cambio.\n";
+            remove("bin/datos/temp.csv");
+        }
+     }else {
+        cout << "No se encontró un repuesto con los criterios especificados.\n";
+        remove("bin/datos/temp.csv");  // Elimina el archivo temporal si no se encontró el registro
+    }
+}
 
 //funcion para leer lista completa de clientes
 void leerListaClientes(){
