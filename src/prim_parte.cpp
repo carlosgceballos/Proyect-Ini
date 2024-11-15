@@ -63,8 +63,8 @@ void agregarCliente(){
     cin >> cl.activo;
 
     ofstream archivo("bin/datos/clientes.csv", ios::app);
-    archivo <<"C.I: "<< cl.cedula << "\t" << "Nombre: "<< cl.nombre <<"\t" <<"Apellido: "<< cl.apellido << "\t" << "Email: "<< cl.email << "\t" << "Cantidad Autos Rentados: "<< cl.cantidad_vehiculos_rentados 
-    << "\t" <<"Direccion: "<< cl.direccion << "\t" << "Activo (1=Si, 0=No): "<< cl.activo << endl;
+    archivo <<"C.I: "<< cl.cedula << "," << "Nombre: "<< cl.nombre <<"," <<"Apellido: "<< cl.apellido << "," << "Email: "<< cl.email << "," << "Cantidad Autos Rentados: "<< cl.cantidad_vehiculos_rentados 
+    << "," <<"Direccion: "<< cl.direccion << "," << "Activo (1=Si, 0=No): "<< cl.activo << endl;
     archivo.close();
     cout << "Cliente agregado.";
     cout << endl;
@@ -85,7 +85,7 @@ void ConsCl(){
     bool encontrado = false;
     while(getline(archivo, cliente)){
         size_t posi = cliente.find(cedulaBuscar);
-        if(posi != string::npos && posi == 5){// posi == 0 porque la cedula esta al principio de la linea
+        if(posi != string::npos && posi == 5){// posi == 0 porque la cedula debe estar en 0 en la primera linea
             cout << cliente<<endl;
             encontrado = true;
             break;
@@ -136,12 +136,16 @@ void agregarVehiculo(){
     cin >> vehi.fecha_entrega;
     
     ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
-    archivo << vehi.modelo << "\t" << vehi.marca << "\t" << vehi.placa << "\t"<< vehi.color << "\t" << vehi.year << "\t" << vehi.kilometraje << "\t" << vehi.rentado << "\t" << vehi.motor << "\t" << vehi.precio_renta << "\t" << vehi.ced_cliente << "\t" << vehi.fecha_entrega << endl;
+    archivo << "Placa: "<< vehi.placa<<","<<"Modelo:" <<vehi.modelo << "," <<"Marca: "<< vehi.marca<<"," 
+    <<"Color: "<< vehi.color << "," <<"Year:"<< vehi.year << "," <<"Kilometraje: "<< vehi.kilometraje << ","<<"Rentado: " 
+    << vehi.rentado << "," <<"Motor: " << vehi.motor << "," <<"Precio Renta: " << vehi.precio_renta << "," <<"C.I Cliente: "<< 
+    vehi.ced_cliente << "," <<"Fecha de entrega: " << vehi.fecha_entrega << endl;
     archivo.close();
     cout << "Vehiculo agregado.\n";
 
 }
 
+//funcion para agregar repuestos
 void agregarRepuesto(){
     Repuesto re;
     cout<<"Ingrese los datos del repuesto:\n";
@@ -161,8 +165,8 @@ void agregarRepuesto(){
     cin>>re.existencias;
 
     ofstream archivo("bin/datos/repuestos.cvs", ios::app);
-    archivo<< re.nombre<<"\t"<<re.marca<<"\t"<<re.modelo<<"\t"<<re.modelo_carro<<"\t"<<re.anio_carro<<"\t"
-    <<re.precio<<"\t"<<re.existencias<<endl;
+    archivo<<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: :"<<re.modelo<<","<<"Modelo de carro: "<<re.modelo_carro<<","
+    <<"Year del carro: "<<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencias: "<<re.existencias<<endl;
     archivo.close();
 
     cout<<"Repuesto agregado";
@@ -243,3 +247,4 @@ int main(){
 
     return 0;
 }
+
