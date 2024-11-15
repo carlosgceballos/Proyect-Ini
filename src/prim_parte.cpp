@@ -272,11 +272,6 @@ void actualizarDatos(){
 
 }
 
-void borrarDatos(){
-
-
-
-}
 //Funcion para leer la lista de repuestos
 
 void leerRepuestos(){
@@ -351,7 +346,7 @@ int main(){
             break;
 
             case 5:
-            borrarDatos();
+        
             break;
 
             case 0:
