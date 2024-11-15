@@ -117,8 +117,86 @@ void agregarVehiculo(){
 
 }
 
+void agregarRepuesto(){
+    Repuesto re;
+    cout<<"Ingrese los datos del repuesto:\n";
+    cout<<"Nombre:\n";
+    cin>> re.nombre;
+    cout<<"Marca:\n";
+    cin>>re.marca;
+    cout<<"Modelo:\n";
+    cin>>re.modelo;
+    cout<<"Modelo de carro:\n";
+    cin>>re.modelo_carro;
+    cout<<"Year del carro\n";
+    cin>>re.anio_carro;
+    cout<<"Precio:\n";
+    cin>>re.precio;
+    cout<<"Existencias:\n";
+    cin>>re.existencias;
+
+    ofstream archivo("bin/datos/repuestos.cvs", ios::app);
+    archivo<< re.nombre<<"/t"<<re.marca<<"/t"<<re.modelo<<"/t"<<re.modelo_carro<<"/t"<<re.anio_carro<<"/t"
+    <<re.precio<<"/t"<<re.existencias<<endl;
+    archivo.close();
+
+    cout<<"Repuesto agregado";
+
+}
+
+void actualizarDatos(){
+
+}
+
+void borrarDatos(){
+
+
+
+}
 
 int main(){
+
+    int opcion;
+    do{
+        cout <<"1. Agregar Cliente:\n";
+        cout <<"2. Agregar Vehiculo:\n";
+        cout <<"3. Agregar Repuesto:\n";
+        cout <<"4. Actualizar Dato:\n";
+        cout <<"5. Borrar Dato:\n";
+        cout << "0. Salir:\n";
+        cin >> opcion;
+
+        switch(opcion){
+            case 1:
+            agregarCliente();
+            break;
+
+            case 2:
+            agregarVehiculo();
+            break;
+
+            case 3:
+            agregarRepuesto();
+            break;
+
+            case 4:
+            actualizarDatos();
+            break;
+
+            case 5:
+            borrarDatos();
+            break;
+
+            case 0:
+            cout << "Saliendo del programa...\n";
+            break;
+
+            default:
+            cout << "Opcion no valida, intente de nuevo. \n ";
+        }
+    }while(opcion !=0);
+
+
 
     return 0;
 }
