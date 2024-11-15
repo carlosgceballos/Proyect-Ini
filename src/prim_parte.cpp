@@ -304,7 +304,7 @@ void consultaVehiculo(){
 
     while(getline(archivo, vehiculos)){
         size_t posi = vehiculos.find(Placa);
-        if(posi !=string::npos && posi == 7){
+        if(posi !=string::npos && posi == 0){
             cout << vehiculos << endl;
             encontrado = true;
             break;
@@ -314,31 +314,155 @@ void consultaVehiculo(){
         cout << "No se encontro el vehiculo con la placa especificada." << endl;
     }
     archivo.close();
+
+}
+
+//Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
+void consultaRepuesto(){
+    ifstream archivo("bin/datos/vehiculos.cvs");
+    string Repuesto, nombreBuscar, modeloCarroBuscar;
+    int anioCarroBuscar;
+    bool encontrado = false;
+    if(!archivo.is_open()){
+        cout << "No se pudo abrir el archivo de repuestos.\n";
+        return;
+
+    }
+    //Solicitar los datos de busqueda
+    cout << "Ingrese el nombre del repuesto que desea buscar:";
+    cin >> nombreBuscar;
+    cout << "Ingrese el modelo del carro asociado al repuesto:";
+    cin >> modeloCarroBuscar;
+    cout << "Ingrese el año del carro asociado al repuesto:";
+    cin >> anioCarroBuscar;
+
+    //Recorrer el archivo linea por linea 
+    while(getline(archivo, Repuesto)){
+        //verificar si todos los criterios estan en la linea actual
+        size_t posNombre =
+        Repuesto.find("Nombre:" + nombreBuscar);
+        size_t posModeloCarro =
+        Repuesto.find("Modelo de carro:" + modeloCarroBuscar);
+        size_t posAnioCarro = Repuesto.find("Year del carro:" + to_string(anioCarroBuscar));
+
+        //Comprobar que todos los criterios coincidan
+        if(posNombre != string::npos&& posModeloCarro != string::npos&& posAnioCarro != string::npos){
+            cout << "Repuesto encontrado:\n"; 
+            cout << Repuesto << endl;
+            encontrado = true;
+            break;
+        }
+    }
+    if(!encontrado){
+        cout << "No se encontro un repuesto con los datos especificados.\n";
+    }
+    archivo.close();
 }
 
 int main(){
 
     int opcion;
     do{
-        cout <<"1. Agregar Cliente:\n";
-        cout <<"2. Agregar Vehiculo:\n";
-        cout <<"3. Agregar Repuesto:\n";
+        cout <<"1. Agregar registro:\n";
+        cout <<"2. Consultar dato en un registro\n";
+        cout <<"3. Borrar registro:\n";
         cout <<"4. Actualizar Dato:\n";
-        cout <<"5. Borrar Dato:\n";
+        cout <<"";
         cout << "0. Salir:\n";
         cin >> opcion;
 
         switch(opcion){
-            case 1:
-            agregarCliente();
+            case 1: {
+            int op;
+            do{
+                cout<<"1. Agregar cliente."<<endl;
+                cout<<"2. Agregar vehiculo."<<endl;
+                cout<<"3. Agregar repuesto."<<endl;
+                cout<<"0. Cancelar." <<endl;
+                cin>>op;
+                switch(op){
+                    case 1:
+                agregarCliente();
+                break;
+                case 2:
+                agregarVehiculo();
+                break;
+                case 3:
+                agregarRepuesto();
+                case 0:
+                cout<<"Regresando al menu principal."<<endl;
+                break;
+                default:
+                cout<<"Opcion invalida.";
+            }
+            }while(op!=0);
             break;
+            }
+            case 2: {
+                int op;
+                do{
+                    cout<<"1. Consultar cliente."<<endl;
+                    cout<<"2. Consultar vehiculo."<<endl;
+                    cout<<"3. Consultar repuesto."<<endl;
+                    cout<<"0. Regresar al menu principal"<<endl;
+                    cin>>op;
+                    switch(op){
+                        case 1:
+                        ConsCl();
+                        break;
+                        case 2:
+                        consultaVehiculo();
+                        break;
+                        case 3:
+                        consultaRepuesto();
+                        break;
+                        case 0:
+                        cout<<"Regresando al menu principal."<<endl;
+                        break;
+                        default:
+                        cout<<"Opcion invalida";
+                    }
 
-            case 2:
-            agregarVehiculo();
+                }while(op!=0);
             break;
-
-            case 3:
-            agregarRepuesto();
+            }
+            case 3:{
+                int op;
+                do{
+                    cout<<"1. Borrar registro de cliente."<<endl;
+                    cout<<"2. Borrar registro de vehiculo."<<endl;
+                    cout<<"3. Borrar registro de Repuesto."<<endl;
+                    cout<<"0. Regresar al menu principal."<<endl;
+                    cin>>op;
+                    switch(op){
+                        case 1:{
+                        string cedula;
+                        cout<<"Ingrese la cedula del cliente: ";
+                        cin>>cedula;
+                        borrarRegistro("bin/datos/clientes.csv", cedula);
+                        break;
+                        }
+                        case 2:{
+                        string placa;
+                        cout<<"Ingrese la placa del vehiculo";
+                        cin>>placa;
+                        borrarRegistro("bin/datos/vehiculos.csv", placa);
+                        break;
+                        }
+                        case 3:{
+                            borrarRepuesto();
+                        break;
+                        }
+                        case 0:
+                        cout<<"Regresando al menu principal."<<endl;
+                        break;
+                        default:
+                        cout<<"Opcion invalida";
+                    }
+                }while(op !=0);
+                break;
+            }
+    
             break;
 
             case 4:
@@ -358,8 +482,6 @@ int main(){
         }
     }while(opcion !=0);
 
-
-
     return 0;
-}
+    }
 
