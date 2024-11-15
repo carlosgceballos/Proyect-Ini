@@ -200,6 +200,31 @@ void leerRepuestos(){
     archivo.close();
 
 }
+//Funcion consulta de vehiculo
+void consultaVehiculo(){
+    ifstream archivo("bin/datos/vehiculos.cvs");
+    string vehiculos, Placa;
+    bool encontrado = false;
+    if(!archivo.is_open()){
+        cout << "No se puede acceder al archivo" << endl;
+        return;
+    }
+    cout << "Ingrese la placa que desee buscar:";
+    cin >> Placa;
+
+    while(getline(archivo, vehiculos)){
+        size_t posi = vehiculos.find(Placa);
+        if(posi !=string::npos && posi == 7){
+            cout << vehiculos << endl;
+            encontrado = true;
+            break;
+        }
+    }
+    if(!encontrado){
+        cout << "No se encontro el vehiculo con la placa especificada." << endl;
+    }
+    archivo.close();
+}
 
 int main(){
 
