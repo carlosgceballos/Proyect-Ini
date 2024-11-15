@@ -325,8 +325,7 @@ void consultaVehiculo(){
 
 void consultaRepuesto(){
     ifstream archivo("bin/datos/vehiculos.cvs");
-    string Repuesto, nombreBuscar;
-    modeloCarroBuscar;
+    string Repuesto, nombreBuscar,modeloCarroBuscar;
     int anioCarroBuscar;
     bool encontrado = false;
     if(!archivo.is_open()){
@@ -363,7 +362,48 @@ void consultaRepuesto(){
         cout << "No se encontro un repuesto con los datos especificados.\n";
     }
     archivo.close();
+
 }
+//Funcion para no alterar archivos hasta confirmarlos 
+template <typename T>//nos permite trabajar con cualquier tipo de dato
+void confirmarAgregado(const T& nuevoRegistro,const string& archivoOriginal,const string& archivoTemporal){
+    //const T& nuevoRegistro es el registro que se desea agregar(de tipocliente,vehiculo o repuesto).
+    //const string& archivoOriginal el nombre del archivo donde se almacenan lo datos confirmados.
+    //const string& archivoTemporal el nombre del archivo donde se almacenan los dayos hasta que el usuario confirme.
+
+    ofstream tempArchivo(archivoTemporal,ios::app);
+    if constexpr (is_same<T,Cliente>::value){
+        tempArchivo<<
+        nuevoRegistro.cedula << "," <<
+        nuevoRegistro.nombre << "," << 
+        nuevoRegistro.apellido << "," << nuevoRegistro.email << "," << nuevoRegistro.cantidad_vehiculos_rentados <<"," << nuevoRegistro.direccion << "," << nuevoRegistro.activo << endl;
+
+    }else if constexpr(is_same<T, vehiculo>::value){
+        tempArchivo << nuevoRegistro.placa << "," << nuevoRegistro.modelo << "," << 
+        nuevoRegistro.marca << "," << nuevoRegistro.color << "," nuevoRegistro.year << "," << nuevoRegistro.kilometraje << ","<< nuevoRegistro.rentado << "," << nuevoRegistro.motor << "," << nuevoRegistro.precio_renta << "," << nuevoRegistro.ced_cliente << "," << nuevoRegistro.fecha_entrega << endl;
+
+    }else if constexpr(is_same<T, Repuesto>::value){
+        tempArchivo << nuevoRegistro.nombre << "," << nuevoRegistro.anio_carro << "," << nuevoRegistro.precio << "," << nuevoRegistro.existencias << endl;
+
+    }
+    tempArchivo.close();
+
+    int confirmar;
+    cout << "Desea confirmar el agregado del registro? (1 para confirmar,0 para cancelar):";
+    cin >> confirmar;
+
+    if (confirmar==1){
+        remove(archivoOriginal.c_str()); //Elimina el archivo original y renombra el temporal al nombre original
+        rename(archivoTemporal.c_str(), archivoOriginal.c_str());
+        cout << "Registro agregado exitosamente.\n";
+    }else{
+        remove(archivoTemporal.c_str()); //Elimina el archivo temporal si se cancela la operacion
+        cout << "Operacion cancelada. No se realizo ningun cambio.\n";
+    }
+    
+     
+}
+
 
 int main(){
 
