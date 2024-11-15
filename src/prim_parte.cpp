@@ -120,5 +120,47 @@ void agregarVehiculo(){
 
 int main(){
 
+    int opcion;
+    do{
+        cout <<"1. Agregar Cliente:\n";
+        cout <<"2. Agregar Vehiculo:\n";
+        cout <<"3. Agregar Repuesto:\n";
+        cout <<"4. Actualizar Dato:\n";
+        cout <<"5. Borrar Dato:\n";
+        cout << "0. Salir:\n";
+        cin >> opcion;
+
+        switch(opcion){
+            case 1:
+            agregarCliente();
+            break;
+
+            case 2:
+            agregarVehiculo();
+            break;
+
+            case 3:
+            AgregarRepuesto();
+            break;
+
+            case 4:
+            ActualizarDato();
+            break;
+
+            case 5:
+            BorrarDato();
+            break;
+
+            case 0:
+            cout << "Saliendo del programa...\n";
+            break;
+
+            default:
+            cout << "Opcion no valida, intente de nuevo. \n ";
+        }
+    }while(opcion !=0)
+
+
+
     return 0;
 }
