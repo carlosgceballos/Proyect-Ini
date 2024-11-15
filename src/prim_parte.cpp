@@ -178,6 +178,24 @@ void borrarDatos(){
 
 
 }
+//Funcion para leer la lista de repuestos
+
+void leerRepuestos(){
+    ifstream archivo("bin/datos/lista repuestos.csv");
+    string Repuesto;
+    
+    cout << "Datos de repuesto:\n";
+
+    if (!archivo.is_open()){
+        
+        cout << "Error al abrir el archivo de repuestos.\n";
+    }
+    while(getline(archivo, Repuesto)){
+        cout << "repuesto" << endl;
+    }
+    archivo.close();
+
+}
 
 int main(){
     int opcion;
