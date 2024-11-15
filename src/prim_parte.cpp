@@ -140,15 +140,15 @@ int main(){
             break;
 
             case 3:
-            AgregarRepuesto();
+            agregarRepuesto();
             break;
 
             case 4:
-            ActualizarDato();
+            actualizarDato();
             break;
 
             case 5:
-            BorrarDato();
+            borrarDato();
             break;
 
             case 0:
