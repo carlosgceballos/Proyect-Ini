@@ -25,7 +25,7 @@ struct Repuesto {
 
 
 //funcion para leer lista completa de clientes
-void leerListaClientes() {
+void leerListaClientes(){
     ifstream archivo("bin/datos/clientes.csv");
     string cliente;
 
@@ -43,7 +43,7 @@ void leerListaClientes() {
 }
 
 //funcion para agregar clientes
-void agregarCliente() {
+void agregarCliente(){
     Cliente cl;
     cout << "Ingrese los datos del cliente:\n";
     cout << "Cedula: "; 
