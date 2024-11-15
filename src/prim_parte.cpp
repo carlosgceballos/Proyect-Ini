@@ -325,8 +325,7 @@ void consultaVehiculo(){
 
 void consultaRepuesto(){
     ifstream archivo("bin/datos/vehiculos.cvs");
-    string Repuesto, nombreBuscar;
-    modeloCarroBuscar;
+    string Repuesto, nombreBuscar,modeloCarroBuscar;
     int anioCarroBuscar;
     bool encontrado = false;
     if(!archivo.is_open()){
