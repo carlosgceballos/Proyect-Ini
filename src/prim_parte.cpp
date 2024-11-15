@@ -157,12 +157,7 @@ void agregarCliente(){
     cout << "Activo (1 para si, 0 para no): "; 
     cin >> cl.activo;
 
-    ofstream archivo("bin/datos/clientes.csv", ios::app);
-    archivo <<"C.I: "<< cl.cedula << "," << "Nombre: "<< cl.nombre <<"," <<"Apellido: "<< cl.apellido << "," << "Email: "<< cl.email << "," << "Cantidad Autos Rentados: "<< cl.cantidad_vehiculos_rentados 
-    << "," <<"Direccion: "<< cl.direccion << "," << "Activo (1=Si, 0=No): "<< cl.activo << endl;
-    archivo.close();
-    cout << "Cliente agregado.";
-    cout << endl;
+   confirmarAgregado(cl, "bin/datos/clientes.csv", "bin/datos/clientes_temp.csv");
 }
 
 //funcion consulta de clientes
@@ -230,13 +225,7 @@ void agregarVehiculo(){
     cout << "Fecha de entrega:";
     cin >> vehi.fecha_entrega;
     
-    ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
-    archivo << "Placa: "<< vehi.placa<<","<<"Modelo:" <<vehi.modelo << "," <<"Marca: "<< vehi.marca<<"," 
-    <<"Color: "<< vehi.color << "," <<"Year:"<< vehi.year << "," <<"Kilometraje: "<< vehi.kilometraje << ","<<"Rentado: " 
-    << vehi.rentado << "," <<"Motor: " << vehi.motor << "," <<"Precio Renta: " << vehi.precio_renta << "," <<"C.I Cliente: "<< 
-    vehi.ced_cliente << "," <<"Fecha de entrega: " << vehi.fecha_entrega << endl;
-    archivo.close();
-    cout << "Vehiculo agregado.\n";
+    confirmarAgregado(vehi, "bin/datos/vehiculos.csv", "bin/datos/vehiculos_temp.csv");
 
 }
 
@@ -259,13 +248,7 @@ void agregarRepuesto(){
     cout<<"Existencias:\n";
     cin>>re.existencias;
 
-    ofstream archivo("bin/datos/repuestos.cvs", ios::app);
-    archivo<<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: :"<<re.modelo<<","<<"Modelo de carro: "<<re.modelo_carro<<","
-    <<"Year del carro: "<<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencias: "<<re.existencias<<endl;
-    archivo.close();
-
-    cout<<"Repuesto agregado";
-
+    confirmarAgregado(re, "bin/datos/repuestos.csv", "bin/datos/repuestos_temp.csv");
 }
 
 void actualizarDatos(){
@@ -319,6 +302,7 @@ void consultaVehiculo(){
 
 //Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
 void consultaRepuesto(){
+
     ifstream archivo("bin/datos/vehiculos.cvs");
     string Repuesto, nombreBuscar,modeloCarroBuscar;
     int anioCarroBuscar;
@@ -359,6 +343,7 @@ void consultaRepuesto(){
     archivo.close();
 
 }
+
 //Funcion para no alterar archivos hasta confirmarlos 
 template <typename T>//nos permite trabajar con cualquier tipo de dato
 void confirmarAgregado(const T& nuevoRegistro,const string& archivoOriginal,const string& archivoTemporal){
@@ -395,8 +380,6 @@ void confirmarAgregado(const T& nuevoRegistro,const string& archivoOriginal,cons
         remove(archivoTemporal.c_str()); //Elimina el archivo temporal si se cancela la operacion
         cout << "Operacion cancelada. No se realizo ningun cambio.\n";
     }
-    
-     
 }
 
 
