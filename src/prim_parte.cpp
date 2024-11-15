@@ -70,6 +70,53 @@ void agregarCliente() {
     cout << endl;
 }
 
+// funcion para leer vehiculos
+
+void leerVehiculos(){
+    ifstream archivo("bin/datos/vehiculos.csv");
+    string Vehiculo;
+    cout << "Datos de Vehiculos:\n";
+    while (getline(archivo,Vehiculo)){
+        cout << "vehiculo" << endl;
+    }
+    archivo.close();
+}
+
+// Funcion para agregar Vehiculos
+
+void agregarVehiculo(){
+    Vehiculo vehi;
+    cout << "Ingrese los datos del vehiculo:\n";
+    cout << "Modelo:";
+    cin >> vehi.modelo;
+    cout << "Marca:";
+    cin >> vehi.marca;
+    cout << "Placa:";
+    cin >> vehi.placa;
+    cout << "Color:";
+    cin >> vehi.color;
+    cout << "Year:";
+    cin >> vehi.year;
+    cout << "Kilometraje:";
+    cin >> vehi.kilometraje;
+    cout << "Rentado (1 para si,0 para no):";
+    cin >> vehi.rentado;
+    cout << "Motor:";
+    cin >> vehi.motor;
+    cout << "Precio de renta:";
+    cin >> vehi.precio_renta;
+    cout << "Cedula del cliente:";
+    cin >> vehi.ced_cliente;
+    cout << "Fecha de entrega:";
+    cin >> vehi.fecha_entrega;
+    
+    ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
+    archivo << vehi.modelo << "/t" << vehi.marca << "/t" << vehi.placa << "/t"<< vehi.color << "/t" << vehi.year << "/t" << vehi.kilometraje << "/t" << vehi.rentado << "/t" << vehi.motor << "/t" << vehi.precio_renta << "/t" << vehi.ced_cliente << "/t" << vehi.fecha_entrega << endl;
+    archivo.close();
+    cout << "Vehiculo agregado.\n";
+
+}
+
 
 int main(){
 
