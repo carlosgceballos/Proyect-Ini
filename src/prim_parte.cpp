@@ -63,8 +63,8 @@ void agregarCliente(){
     cin >> cl.activo;
 
     ofstream archivo("bin/datos/clientes.csv", ios::app);
-    archivo << cl.cedula << "\t" << cl.nombre << "\t" << cl.apellido << "\t" << cl.email << "\t" << cl.cantidad_vehiculos_rentados 
-    << "\t" << cl.direccion << "\t" << cl.activo << endl;
+    archivo <<"C.I: "<< cl.cedula << "\t" << "Nombre: "<< cl.nombre <<"\t" <<"Apellido: "<< cl.apellido << "\t" << "Email: "<< cl.email << "\t" << "Cantidad Autos Rentados: "<< cl.cantidad_vehiculos_rentados 
+    << "\t" <<"Direccion: "<< cl.direccion << "\t" << "Activo (1=Si, 0=No): "<< cl.activo << endl;
     archivo.close();
     cout << "Cliente agregado.";
     cout << endl;
@@ -85,14 +85,14 @@ void ConsCl(){
     bool encontrado = false;
     while(getline(archivo, cliente)){
         size_t posi = cliente.find(cedulaBuscar);
-        if(posi != string::npos && posi == 0){// posi == 0 porque la cedula esta al principio de la linea
+        if(posi != string::npos && posi == 5){// posi == 0 porque la cedula esta al principio de la linea
             cout << cliente<<endl;
             encontrado = true;
             break;
         }
     }
     if (!encontrado){
-        cout<<"No se encontro un cliente con la cedula proporcionada.";
+        cout<<"No se encontro un cliente con la cedula proporcionada."<<endl;
     }
     archivo.close();
 }
@@ -198,6 +198,7 @@ void leerRepuestos(){
 }
 
 int main(){
+
     int opcion;
     do{
         cout <<"1. Agregar Cliente:\n";
