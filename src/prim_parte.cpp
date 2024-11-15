@@ -24,8 +24,8 @@ struct Repuesto {
 };
 
 
-//funcion para leer clientes
-void leerClientes() {
+//funcion para leer lista completa de clientes
+void leerListaClientes() {
     ifstream archivo("bin/datos/clientes.csv");
     string cliente;
 
