@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <type_traits>
+#include <typeinfo>
 
 using namespace std;
 
@@ -268,12 +268,7 @@ void agregarRepuesto(){
     cout<<"Repuesto agregado";
 }
 
-void actualizarDatos(){
-
-}
-
 //Funcion para leer la lista de repuestos
-
 void leerRepuestos(){
     ifstream archivo("bin/datos/lista repuestos.csv");
     string Repuesto;
@@ -290,6 +285,7 @@ void leerRepuestos(){
     archivo.close();
 
 }
+
 //Funcion consulta de vehiculo
 void consultaVehiculo(){
     ifstream archivo("bin/datos/vehiculos.cvs");
@@ -358,6 +354,77 @@ void consultaRepuesto(){
     }
     archivo.close();
 
+}
+
+//funcion para modificar clientes
+void modificarCliente(const string& archivoOriginal, const string& archivoTemporal, const string& identificador) {
+    ifstream archivo(archivoOriginal);
+    ofstream tempArchivo(archivoTemporal);
+
+    if (!archivo.is_open() || !tempArchivo.is_open()) {
+        cout << "No se pudo abrir uno de los archivos.\n";
+        return;
+    }
+
+    string linea;
+    bool encontrado = false;
+
+    while (getline(archivo, linea)) {
+        size_t pos = linea.find(identificador);
+
+        if (pos != string::npos && pos == 5) {
+            encontrado = true;
+            Cliente clienteModificado;
+
+            // Solicitar datos del cliente
+            cout << "Ingrese los nuevos datos del cliente:\n";
+            cout << "Cedula: ";
+            cin >> clienteModificado.cedula;
+            cout << "Nombre: ";
+            cin >> clienteModificado.nombre;
+            cout << "Apellido: ";
+            cin >> clienteModificado.apellido;
+            cout << "Email: ";
+            cin >> clienteModificado.email;
+            cout << "Cantidad de vehiculos rentados: ";
+            cin >> clienteModificado.cantidad_vehiculos_rentados;
+            cout << "Direccion: ";
+            cin.ignore();
+            getline(cin, clienteModificado.direccion);
+            cout << "Activo (1 para si, 0 para no): ";
+            cin >> clienteModificado.activo;
+
+            // Escribir datos modificados al archivo temporal
+            tempArchivo << "C.I: "<<clienteModificado.cedula << "," <<"Nombre: "<< clienteModificado.nombre << ","
+                        <<"Apellido: " << clienteModificado.apellido << "," << clienteModificado.email << ","
+                        <<"C.A.R: "<< clienteModificado.cantidad_vehiculos_rentados << ","
+                        <<"Addr: " << clienteModificado.direccion << ","<< "Activo (1 si; 0 no):" << clienteModificado.activo << endl;
+
+        } else {
+            tempArchivo << linea << endl; // Copiar línea sin modificar
+        }
+    }
+
+    archivo.close();
+    tempArchivo.close();
+
+    if (encontrado) {
+        int confirmar;
+        cout << "Desea confirmar los cambios? (1 para confirmar, 0 para cancelar): ";
+        cin >> confirmar;
+
+        if (confirmar == 1) {
+            remove(archivoOriginal.c_str());
+            rename(archivoTemporal.c_str(), archivoOriginal.c_str());
+            cout << "Registro modificado exitosamente.\n";
+        } else {
+            remove(archivoTemporal.c_str());
+            cout << "Operación cancelada. No se realizaron cambios.\n";
+        }
+    } else {
+        remove(archivoTemporal.c_str());
+        cout << "No se encontró un cliente con el identificador especificado.\n";
+    }
 }
 
 int main(){
@@ -469,7 +536,43 @@ int main(){
             break;
 
             case 4:
-            actualizarDatos();
+            int op;
+            do{
+            cout<<"1. Actualizar cliente."<<endl;
+            cout<<"2. Actualizar vehiculo."<<endl;
+            cout<<"3. Actualizar repuesto."<<endl;
+            cout<<"0. Regresar al menu principal"<<endl;
+            cin>>op;
+            switch(op){
+                case 1:{
+                string identificador;
+                cout << "Ingrese la cedula del cliente a modificar: ";
+                cin >> identificador;
+                modificarCliente("bin/datos/clientes.csv", "bin/datos/temp_clientes.csv", identificador);
+                    break;
+                }
+            case 2:{
+                string identificador;
+                cout << "Ingrese la placa del vehiculo a modificar: ";
+                cin >> identificador;
+                
+                break;
+            }
+            case 3:{
+                string identificador;
+                cout << "Ingrese el nombre del repuesto a modificar: ";
+                cin >> identificador;
+                
+                break;
+            }
+            case 0:{
+                cout << "Regresando al menu principal." << endl;
+                break;
+            }
+            default:
+            cout << "Opcion invalida." << endl;
+            }
+        }while(op!=0);
             break;
 
             case 5:
