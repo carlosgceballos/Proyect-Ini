@@ -391,9 +391,10 @@ void consultaRepuesto(){
     }
     //Solicitar los datos de busqueda
     cout << "Ingrese el nombre del repuesto que desea buscar: ";
-    cin >> nombreBuscar;
-    cout << "Ingrese el modelo del carro asociado al repuesto: (Si se separa por espacio solo escribir la primera parte)";
-    cin >> modeloCarroBuscar;
+    cin.ignore();
+    getline(cin, nombreBuscar);
+    cout << "Ingrese el modelo del carro asociado al repuesto: ";
+    getline(cin, modeloCarroBuscar);
     cout << "Ingrese el año del carro asociado al repuesto: ";
     cin >> anioCarroBuscar;
 
