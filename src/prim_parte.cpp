@@ -498,6 +498,80 @@ void modificarCliente(const string& archivoOriginal, const string& archivoTempor
     }
 }
 
+//Funcion para modificar repuesto por su nombre, modelo de carro y año del modelo de carro
+void modificarRepuesto(const string&archivoOriginal,const string&archivoTemporal,const string&nombreRepuesto,const string&modeloCarro,int anioCarro){
+    ifstream archivo(archivoOriginal);
+    ofstream tempArchivo(archivoTemporal);
+
+    if(!archivo.is_open() || ! tempArchivo.is_open()){
+        cout << "No se pudo abrir uno de los archivos.\n";
+        return;
+
+    }
+
+    string linea;
+    bool encontrado = false;
+
+    //Leer linea por linea 
+    while(getline(archivo, linea)) {
+        //Verificar si la linea contiene todos los identificadores
+        size_t posNombre=
+        linea.find(nombreRepuesto);
+        size_t posModeloCarro =
+        linea.find(modeloCarro);
+        size_t posAnioCarro = 
+        linea.find(to_string(anioCarro));
+
+        if(posNombre != string::npos && posModeloCarro != string::npos && posAnioCarro != string::npos){
+            encontrado = true;
+            Repuesto repuestoModificado;
+
+            //Solicitar los nuevos datos del repuesto
+            cout << "Ingrese los nuevos datos del repuesto:\n";
+            cout << "Nombre:";
+            cin >> repuestoModificado.nombre;
+            cout << "Marca:";
+            cin >> repuestoModificado.marca;
+            cout << "Modelo:";
+            cin >> repuestoModificado.modelo;
+            cout << "Modelo del carro:";
+            cin >> repuestoModificado.modelo_carro;
+            cout << "Año del carro:";
+            cin >> repuestoModificado.anio_carro;
+            cout << "Precio:";
+            cin >> repuestoModificado.precio;
+            cout << "Existencias:";
+            cin >> repuestoModificado.existencias;
+            
+            //Escribir los nuevos datos en el archivo temporal
+            tempArchivo << repuestoModificado.nombre << ","<< repuestoModificado.marca << "," << repuestoModificado.modelo << "," << repuestoModificado.modelo_carro << "," << repuestoModificado.anio_carro << "," << repuestoModificado.precio << "," << repuestoModificado.existencias << endl;
+
+        }else{
+            tempArchivo << linea << endl;
+        }
+    }
+    archivo.close();
+    tempArchivo.close();
+
+    if(encontrado){
+        int confirmar;
+        cout << "Desea confirmar los cambios? (1 para confirmar, 0 para cancelar):";
+        cin >>confirmar;
+
+        if(confirmar==1){
+            remove(archivoOriginal.c_str());
+            rename(archivoTemporal.c_str(),archivoOriginal.c_str());
+            cout << "Registro modificado exitosamente.\n";
+        }else{
+            remove(archivoTemporal.c_str());
+            cout << "Operacion cancelda. No se realizaron cambios.\n";
+        }
+    }else{
+        remove(archivoTemporal.c_str());
+        cout << "No se encontro un repuesto con los criterios especificados.\n";
+    }
+}
+
 int main(){
 
     int opcion;
