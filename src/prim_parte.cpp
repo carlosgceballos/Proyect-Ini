@@ -157,7 +157,12 @@ void agregarCliente(){
     cout << "Activo (1 para si, 0 para no): "; 
     cin >> cl.activo;
 
-   confirmarAgregado(cl, "bin/datos/clientes.csv", "bin/datos/clientes_temp.csv");
+    ofstream archivo("bin/datos/clientes.csv", ios::app);
+    archivo <<"C.I: "<< cl.cedula << "," << "Nombre: "<< cl.nombre <<"," <<"Apellido: "<< cl.apellido << "," << "Email: "<< cl.email << "," << "Cantidad Autos Rentados: "<< cl.cantidad_vehiculos_rentados 
+    << "," <<"Direccion: "<< cl.direccion << "," << "Activo (1=Si, 0=No): "<< cl.activo << endl;
+    archivo.close();
+    cout << "Cliente agregado.";
+    cout << endl;
 }
 
 //funcion consulta de clientes
@@ -225,7 +230,13 @@ void agregarVehiculo(){
     cout << "Fecha de entrega:";
     cin >> vehi.fecha_entrega;
     
-    confirmarAgregado(vehi, "bin/datos/vehiculos.csv", "bin/datos/vehiculos_temp.csv");
+    ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
+    archivo << "Placa: "<< vehi.placa<<","<<"Modelo:" <<vehi.modelo << "," <<"Marca: "<< vehi.marca<<"," 
+    <<"Color: "<< vehi.color << "," <<"Year:"<< vehi.year << "," <<"Kilometraje: "<< vehi.kilometraje << ","<<"Rentado: " 
+    << vehi.rentado << "," <<"Motor: " << vehi.motor << "," <<"Precio Renta: " << vehi.precio_renta << "," <<"C.I Cliente: "<< 
+    vehi.ced_cliente << "," <<"Fecha de entrega: " << vehi.fecha_entrega << endl;
+    archivo.close();
+    cout << "Vehiculo agregado.\n";
 
 }
 
@@ -248,7 +259,12 @@ void agregarRepuesto(){
     cout<<"Existencias:\n";
     cin>>re.existencias;
 
-    confirmarAgregado(re, "bin/datos/repuestos.csv", "bin/datos/repuestos_temp.csv");
+    ofstream archivo("bin/datos/repuestos.cvs", ios::app);
+    archivo<<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: :"<<re.modelo<<","<<"Modelo de carro: "<<re.modelo_carro<<","
+    <<"Year del carro: "<<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencias: "<<re.existencias<<endl;
+    archivo.close();
+
+    cout<<"Repuesto agregado";
 }
 
 void actualizarDatos(){
@@ -344,44 +360,6 @@ void consultaRepuesto(){
 
 }
 
-//Funcion para no alterar archivos hasta confirmarlos 
-template <typename T>//nos permite trabajar con cualquier tipo de dato
-void confirmarAgregado(const T& nuevoRegistro,const string& archivoOriginal,const string& archivoTemporal){
-    //const T& nuevoRegistro es el registro que se desea agregar(de tipocliente,vehiculo o repuesto).
-    //const string& archivoOriginal el nombre del archivo donde se almacenan lo datos confirmados.
-    //const string& archivoTemporal el nombre del archivo donde se almacenan los dayos hasta que el usuario confirme.
-
-    ofstream tempArchivo(archivoTemporal,ios::app);
-    if constexpr (is_same<T,Cliente>::value){
-        tempArchivo<<
-        nuevoRegistro.cedula << "," <<
-        nuevoRegistro.nombre << "," << 
-        nuevoRegistro.apellido << "," << nuevoRegistro.email << "," << nuevoRegistro.cantidad_vehiculos_rentados <<"," << nuevoRegistro.direccion << "," << nuevoRegistro.activo << endl;
-
-    }else if constexpr(is_same<T, vehiculo>::value){
-        tempArchivo << nuevoRegistro.placa << "," << nuevoRegistro.modelo << "," << 
-        nuevoRegistro.marca << "," << nuevoRegistro.color << "," nuevoRegistro.year << "," << nuevoRegistro.kilometraje << ","<< nuevoRegistro.rentado << "," << nuevoRegistro.motor << "," << nuevoRegistro.precio_renta << "," << nuevoRegistro.ced_cliente << "," << nuevoRegistro.fecha_entrega << endl;
-
-    }else if constexpr(is_same<T, Repuesto>::value){
-        tempArchivo << nuevoRegistro.nombre << "," << nuevoRegistro.anio_carro << "," << nuevoRegistro.precio << "," << nuevoRegistro.existencias << endl;
-
-    }
-    tempArchivo.close();
-
-    int confirmar;
-    cout << "Desea confirmar el agregado del registro? (1 para confirmar,0 para cancelar):";
-    cin >> confirmar;
-
-    if (confirmar==1){
-        remove(archivoOriginal.c_str()); //Elimina el archivo original y renombra el temporal al nombre original
-        rename(archivoTemporal.c_str(), archivoOriginal.c_str());
-        cout << "Registro agregado exitosamente.\n";
-    }else{
-        remove(archivoTemporal.c_str()); //Elimina el archivo temporal si se cancela la operacion
-        cout << "Operacion cancelada. No se realizo ningun cambio.\n";
-    }
-}
-
 
 int main(){
 
@@ -391,7 +369,7 @@ int main(){
         cout <<"2. Consultar dato en un registro\n";
         cout <<"3. Borrar registro:\n";
         cout <<"4. Actualizar Dato:\n";
-        cout <<"";
+        cout <<"5. Leer registros completos\n";
         cout << "0. Salir:\n";
         cin >> opcion;
 
