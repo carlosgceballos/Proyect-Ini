@@ -360,7 +360,6 @@ void consultaRepuesto(){
 
 }
 
-
 int main(){
 
     int opcion;
