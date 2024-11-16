@@ -24,42 +24,6 @@ struct Repuesto {
     float precio;
 };
 
-template <typename T>
-void confirmarAgregado(const T& nuevoRegistro, const string& archivoOriginal, const string& archivoTemporal) {
-    ofstream tempArchivo(archivoTemporal, ios::app);
-
-    if constexpr (is_same<T, Cliente>::value) {
-        tempArchivo << "C.I: " << nuevoRegistro.cedula << "," << "Nombre: " << nuevoRegistro.nombre << ","
-                    << "Apellido: " << nuevoRegistro.apellido << "," << nuevoRegistro.email << ","
-                    << "C.A.R: " << nuevoRegistro.cantidad_vehiculos_rentados << ","
-                    << "Addr: " << nuevoRegistro.direccion << "," << "Activo (1 si, 0 no): " << nuevoRegistro.activo
-                    << endl;
-    } else if constexpr (is_same<T, Vehiculo>::value) {
-        tempArchivo << nuevoRegistro.placa << "," << nuevoRegistro.modelo << "," << nuevoRegistro.marca << ","
-                    << nuevoRegistro.color << "," << nuevoRegistro.year << "," << nuevoRegistro.kilometraje << ","
-                    << nuevoRegistro.rentado << "," << nuevoRegistro.motor << "," << nuevoRegistro.precio_renta << ","
-                    << nuevoRegistro.ced_cliente << "," << nuevoRegistro.fecha_entrega << endl;
-    } else if constexpr (is_same<T, Repuesto>::value) {
-        tempArchivo << nuevoRegistro.nombre << "," << nuevoRegistro.marca << "," << nuevoRegistro.modelo << ","
-                    << nuevoRegistro.modelo_carro << "," << nuevoRegistro.anio_carro << "," << nuevoRegistro.precio
-                    << "," << nuevoRegistro.existencias << endl;
-    }
-    
-    tempArchivo.close();
-
-    int confirmar;
-    cout << "Desea confirmar el agregado del registro? (1 para confirmar, 0 para cancelar): ";
-    cin >> confirmar;
-
-    if (confirmar == 1) {
-        remove(archivoOriginal.c_str());
-        rename(archivoTemporal.c_str(), archivoOriginal.c_str());
-        cout << "Registro agregado exitosamente.\n";
-    } else {
-        remove(archivoTemporal.c_str());
-        cout << "Operacion cancelada. No se realizo ningun cambio.\n";
-    }
-}
 //funcion para borrar registros de vehiculos y clientes
 void borrarRegistro(const string& archivoOriginal, const string& identificador) {
     ifstream archivo(archivoOriginal);
@@ -355,7 +319,6 @@ void consultaVehiculo(){
 
 //Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
 void consultaRepuesto(){
-
     ifstream archivo("bin/datos/vehiculos.cvs");
     string Repuesto, nombreBuscar,modeloCarroBuscar;
     int anioCarroBuscar;
