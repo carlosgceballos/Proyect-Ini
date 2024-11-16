@@ -334,6 +334,7 @@ void consultaRepuesto(){
 
     //Recorrer el archivo linea por linea 
     while(getline(archivo, Repuesto)){
+       
         //verificar si todos los criterios estan en la linea actual
         size_t posNombre =
         Repuesto.find("Nombre:" + nombreBuscar);
