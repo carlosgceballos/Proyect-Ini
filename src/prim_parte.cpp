@@ -165,7 +165,7 @@ void agregarCliente(){
     cin >> cl.activo;
 
     archivoTemp<<"C.I: "<< cl.cedula << "," << "Nombre: "<< cl.nombre <<"," <<"Apellido: "<< cl.apellido << "," << "Email: "<< cl.email << "," << "C.A.R: "<< cl.cantidad_vehiculos_rentados 
-    << "," <<"Addr: "<< cl.direccion << "," << "Activo (1=Si; 0=No): "<< cl.activo << endl;
+    << "," <<"Addr: "<< cl.direccion << "," << "Activo (1 Si; 0 No): "<< cl.activo << endl;
     archivo.close();
     archivoTemp.close();
     int confirmar;
@@ -215,7 +215,7 @@ void leerVehiculos(){
     string Vehiculo;
     cout << "Datos de Vehiculos:\n";
     while (getline(archivo,Vehiculo)){
-        cout << "vehiculo" << endl;
+        cout << Vehiculo << endl;
     }
     archivo.close();
 }
@@ -229,7 +229,7 @@ Vehiculo VehiculoModificado;
             //Solicitar datos del vehiculo
             string vehiculo;
             while(getline(archivo,vehiculo)){
-                tempArchivo<<vehiculo<<endl;
+                tempArchivo<<vehiculo;
             }
             cout << "Ingrese los nuevos datos del vehiculo:\n";
             cout << "Placa: ";
@@ -293,27 +293,27 @@ void agregarRepuesto(){
     ofstream archivoTemp("bin/datos/repuestos_temp.csv", ios::app);
     string repuesto;
     while(getline(archivo, repuesto)){
-        archivoTemp<<repuesto<<endl;
+        archivoTemp<<repuesto;
     }
     Repuesto re;
     cout<<"Ingrese los datos del repuesto:\n";
-    cout<<"Nombre:\n";
+    cout<<"Nombre: ";
     cin>> re.nombre;
-    cout<<"Marca:\n";
+    cout<<"Marca: ";
     cin>>re.marca;
-    cout<<"Modelo:\n";
+    cout<<"Modelo: ";
     cin>>re.modelo;
-    cout<<"Modelo de carro:\n";
+    cout<<"Modelo de carro: ";
     cin>>re.modelo_carro;
-    cout<<"Year del carro\n";
+    cout<<"Year del carro ";
     cin>>re.anio_carro;
-    cout<<"Precio:\n";
+    cout<<"Precio: ";
     cin>>re.precio;
-    cout<<"Existencias:\n";
+    cout<<"Existencias: ";
     cin>>re.existencias;
 
-    archivoTemp <<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: :"<<re.modelo<<","<<"Modelo de carro: "<<re.modelo_carro<<","
-    <<"Year del carro: "<<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencias: "<<re.existencias<<endl;
+    archivoTemp <<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: "<<re.modelo<<","<<re.modelo_carro<<","
+    <<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencia: "<<re.existencias<<endl;
 
     archivoTemp<<repuesto<<endl;
     archivo.close();
@@ -335,7 +335,7 @@ void agregarRepuesto(){
 
 //Funcion para leer la lista de repuestos
 void leerRepuestos(){
-    ifstream archivo("bin/datos/lista repuestos.csv");
+    ifstream archivo("bin/datos/repuestos.csv");
     string Repuesto;
     
     cout << "Datos de repuesto:\n";
@@ -345,7 +345,7 @@ void leerRepuestos(){
         cout << "Error al abrir el archivo de repuestos.\n";
     }
     while(getline(archivo, Repuesto)){
-        cout << "repuesto" << endl;
+        cout << Repuesto << endl;
     }
     archivo.close();
 
@@ -380,7 +380,7 @@ void consultaVehiculo(){
 
 //Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
 void consultaRepuesto(){
-    ifstream archivo("bin/datos/vehiculos.csv");
+    ifstream archivo("bin/datos/repuestos.csv");
     string Repuesto, nombreBuscar,modeloCarroBuscar;
     int anioCarroBuscar;
     bool encontrado = false;
@@ -390,25 +390,16 @@ void consultaRepuesto(){
 
     }
     //Solicitar los datos de busqueda
-    cout << "Ingrese el nombre del repuesto que desea buscar:";
+    cout << "Ingrese el nombre del repuesto que desea buscar: ";
     cin >> nombreBuscar;
-    cout << "Ingrese el modelo del carro asociado al repuesto:";
+    cout << "Ingrese el modelo del carro asociado al repuesto: (Si se separa por espacio solo escribir la primera parte)";
     cin >> modeloCarroBuscar;
-    cout << "Ingrese el año del carro asociado al repuesto:";
+    cout << "Ingrese el año del carro asociado al repuesto: ";
     cin >> anioCarroBuscar;
 
     //Recorrer el archivo linea por linea 
     while(getline(archivo, Repuesto)){
-       
-        //verificar si todos los criterios estan en la linea actual
-        size_t posNombre =
-        Repuesto.find("Nombre:" + nombreBuscar);
-        size_t posModeloCarro =
-        Repuesto.find("Modelo de carro:" + modeloCarroBuscar);
-        size_t posAnioCarro = Repuesto.find("Year del carro:" + to_string(anioCarroBuscar));
-
-        //Comprobar que todos los criterios coincidan
-        if(posNombre != string::npos&& posModeloCarro != string::npos&& posAnioCarro != string::npos){
+        if (Repuesto.find(nombreBuscar) != string::npos && Repuesto.find(modeloCarroBuscar) != string::npos && Repuesto.find(to_string(anioCarroBuscar)) != string::npos) {
             cout << "Repuesto encontrado:\n"; 
             cout << Repuesto << endl;
             encontrado = true;
@@ -617,9 +608,9 @@ void modificarRepuesto(const string&archivoOriginal,const string&archivoTemporal
             cin >> repuestoModificado.existencias;
             
             //Escribir los nuevos datos en el archivo temporal
-            tempArchivo << repuestoModificado.nombre << ","<< repuestoModificado.marca << "," << repuestoModificado.modelo 
-            << "," << repuestoModificado.modelo_carro << "," << repuestoModificado.anio_carro << "," << repuestoModificado.precio 
-            << "," << repuestoModificado.existencias << endl;
+            tempArchivo << "Nombre: "<<repuestoModificado.nombre << ","<<"Marca: "<< repuestoModificado.marca << "," <<"Modelo: " << repuestoModificado.modelo 
+            << "," << repuestoModificado.modelo_carro << "," << repuestoModificado.anio_carro << "," <<"Precio: "<< repuestoModificado.precio 
+            << "," << "Existencia: "<<repuestoModificado.existencias << endl;
 
         }else{
             tempArchivo << linea << endl;
@@ -752,18 +743,17 @@ int main(){
                 }while(op !=0);
                 break;
             }
-    
             break;
 
             case 4:
-            int op;
+            int opc;
             do{
             cout<<"1. Actualizar cliente."<<endl;
             cout<<"2. Actualizar vehiculo."<<endl;
             cout<<"3. Actualizar repuesto."<<endl;
             cout<<"0. Regresar al menu principal"<<endl;
-            cin>>op;
-            switch(op){
+            cin>>opc;
+            switch(opc){
                 case 1:{
                 string identificador;
                 cout << "Ingrese la cedula del cliente a modificar: ";
@@ -788,7 +778,7 @@ int main(){
                 cin >> modeloCarro;
                 cout << "Ingrese el año del carro asociado al repuesto: ";
                 cin >> anioCarro;
-
+                modificarRepuesto("bin/datos/repuestos.csv", "bin/datos/repuestos_temp.csv", nombreRepuesto, modeloCarro, anioCarro);
                 break;
             }
             case 0:{
@@ -798,11 +788,34 @@ int main(){
             default:
             cout << "Opcion invalida." << endl;
             }
-        }while(op!=0);
+        }while(opc!=0);
             break;
 
             case 5:
-        
+            int op;
+            do{
+                cout<<"1. Leer registro de clientes"<<endl;
+                cout<<"2. Leer registro de vehiculos"<<endl;
+                cout<<"3. Leer registro de repuestos"<<endl;
+                cout<<"0. Regresar al menu principal"<<endl;
+                cin>>op;
+            switch(op){
+                case 1:
+                leerListaClientes();
+                break;
+                case 2:
+                leerVehiculos();
+                break;
+                case 3:
+                leerRepuestos();
+                break;
+                case 0:
+                cout<<"Regresando al menu principal"<<endl;
+                break;
+                default:
+                cout<<"Opcion invalida"<<endl;
+            }
+            }while(op!=0);
             break;
 
             case 0:
