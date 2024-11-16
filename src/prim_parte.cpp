@@ -140,6 +140,12 @@ void leerListaClientes(){
 
 //funcion para agregar clientes
 void agregarCliente(){
+    ifstream archivo("bin/datos/clientes.csv", ios::app);
+    ofstream archivoTemp("bin/datos/clientes_temp.csv", ios::app);
+    string clientes;
+    while(getline(archivo,clientes)){
+        archivoTemp<<clientes<<endl;
+    }
     Cliente cl;
     cout << "Ingrese los datos del cliente:\n";
     cout << "Cedula: "; 
@@ -158,11 +164,21 @@ void agregarCliente(){
     cout << "Activo (1 para si, 0 para no): "; 
     cin >> cl.activo;
 
-    ofstream archivo("bin/datos/clientes.csv", ios::app);
-    archivo <<"C.I: "<< cl.cedula << "," << "Nombre: "<< cl.nombre <<"," <<"Apellido: "<< cl.apellido << "," << "Email: "<< cl.email << "," << "C.A.R: "<< cl.cantidad_vehiculos_rentados 
-    << "," <<"Addr: "<< cl.direccion << "," << "Activo (1=Si, 0=No): "<< cl.activo << endl;
+    archivoTemp<<"C.I: "<< cl.cedula << "," << "Nombre: "<< cl.nombre <<"," <<"Apellido: "<< cl.apellido << "," << "Email: "<< cl.email << "," << "C.A.R: "<< cl.cantidad_vehiculos_rentados 
+    << "," <<"Addr: "<< cl.direccion << "," << "Activo (1=Si; 0=No): "<< cl.activo << endl;
     archivo.close();
-    cout << "Cliente agregado.";
+    archivoTemp.close();
+    int confirmar;
+    cout << "Desea confirmar los cambios? (1 para confirmar, 0 para cancelar):";
+    cin >> confirmar;
+        if(confirmar == 1){
+            remove("bin/datos/clientes.csv");
+            rename("bin/datos/clientes_temp.csv", "bin/datos/clientes.csv");
+            cout << "Registro modificado exitosamente.\n";
+        }else{
+            remove("bin/datos/clientes_temp.csv");
+            cout << "Operacion cancelada.\n";
+        }
     cout << endl;
 }
 
@@ -206,48 +222,79 @@ void leerVehiculos(){
 
 // Funcion para agregar Vehiculos
 void agregarVehiculo(){
-    Vehiculo vehi;
-    cout << "Ingrese los datos del vehiculo:\n";
-    cout << "Modelo:";
-    cin >> vehi.modelo;
-    cout << "Marca:";
-    cin >> vehi.marca;
-    cout << "Placa:";
-    cin >> vehi.placa;
-    cout << "Color:";
-    cin >> vehi.color;
-    cout << "Year:";
-    cin >> vehi.year;
-    cout << "Kilometraje:";
-    cin >> vehi.kilometraje;
-    cout << "Rentado (1 para si,0 para no):";
-    cin >> vehi.rentado;
-    cout << "Motor:";
-    cin >> vehi.motor;
-    cout << "Precio de renta:";
-    cin >> vehi.precio_renta;
-    if(vehi.rentado==1){
-    cout << "Cedula del cliente:";
-    cin >> vehi.ced_cliente;
-    cout << "Fecha de entrega:";
-    cin >> vehi.fecha_entrega;
-    }else{
-        vehi.ced_cliente = 0;
-        vehi.fecha_entrega ="N/A";
-    }
+ifstream archivo("bin/datos/vehiculos.csv", ios:: app);
+ofstream tempArchivo("bin/datos/vehiculos_temp.csv", ios:: app);
 
-    ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
-    archivo << "Placa: "<< vehi.placa<<","<<"Modelo: " <<vehi.modelo << "," <<"Marca: "<< vehi.marca<<"," 
-    <<"Color: "<< vehi.color << "," <<"Year:"<< vehi.year << "," <<"Kilometraje: "<< vehi.kilometraje << ","<<"Rentado: " 
-    << vehi.rentado << "," <<"Motor: " << vehi.motor << "," <<"Precio Renta: " << vehi.precio_renta << "," <<"C.I: "<< 
-    vehi.ced_cliente << "," <<"Fecha de entrega: " << vehi.fecha_entrega << endl;
+Vehiculo VehiculoModificado;
+            //Solicitar datos del vehiculo
+            string vehiculo;
+            while(getline(archivo,vehiculo)){
+                tempArchivo<<vehiculo<<endl;
+            }
+            cout << "Ingrese los nuevos datos del vehiculo:\n";
+            cout << "Placa: ";
+            cin >> VehiculoModificado.placa;
+            cout << "Modelo: ";
+            cin >> VehiculoModificado.modelo;
+            cout << "Marca: ";
+            cin >> VehiculoModificado.marca;
+            cout << "Color: ";
+            cin >> VehiculoModificado.color;
+            cout << "Kilometraje: ";
+            cin >> VehiculoModificado.kilometraje;
+            cout<<"Year: ";
+            cin>>VehiculoModificado.year;
+            cout << "Rentado (1 para si, 0 para no): ";
+            cin>> VehiculoModificado.rentado;
+            cout << "Motor: ";
+            cin >> VehiculoModificado.motor;
+            cout << "Precio de renta: ";
+            cin >> VehiculoModificado.precio_renta;
+            if(VehiculoModificado.rentado==1){
+                 cout << "Fecha de entrega: ";
+                 cin >> VehiculoModificado.fecha_entrega;
+                 cout <<"Cedula del cliente ";
+                 cin>>VehiculoModificado.ced_cliente;
+            }else{
+                VehiculoModificado.fecha_entrega="N/A";
+                VehiculoModificado.ced_cliente = 0;
+            }
+
+            //Escribir datos modificados al archivo temporal
+            tempArchivo << "Placa: " << VehiculoModificado.placa << "," <<"Modelo: " << VehiculoModificado.modelo << "," 
+            <<"Marca: "<< VehiculoModificado.marca << "," <<"Color: " << VehiculoModificado.color <<","
+            << VehiculoModificado.year << "," <<"Kilometraje: "<< VehiculoModificado.kilometraje 
+            << "," << "Rentado(1 si; 0 No): "<<VehiculoModificado.rentado << "," << "Motor: "<< VehiculoModificado.motor << "," 
+            <<"Precio renta: "<< VehiculoModificado.precio_renta << "," 
+            <<"C.I: " << VehiculoModificado.ced_cliente << "," <<"Fecha de entrega: "<< VehiculoModificado.fecha_entrega << endl;
+
+            tempArchivo << vehiculo << endl; // copiar linea sin modificar
+
     archivo.close();
-    cout << "Vehiculo agregado.\n";
+    tempArchivo.close();
 
+        int confirmar;
+        cout << "Desea confirmar los cambios? (1 para confirmar, 0 para cancelar):";
+        cin >> confirmar;
+
+        if(confirmar == 1){
+            remove("bin/datos/vehiculos.csv");
+            rename("bin/datos/vehiculos_temp.csv", "bin/datos/vehiculos.csv");
+            cout << "Registro modificado exitosamente.\n";
+        }else{
+            remove("bin/datos/vehiculos_temp.csv");
+            cout << "Operacion cancelada.\n";
+        }
 }
 
 //funcion para agregar repuestos
 void agregarRepuesto(){
+    ifstream archivo("bin/datos/repuestos.csv", ios :: app);
+    ofstream archivoTemp("bin/datos/repuestos_temp.csv", ios::app);
+    string repuesto;
+    while(getline(archivo, repuesto)){
+        archivoTemp<<repuesto<<endl;
+    }
     Repuesto re;
     cout<<"Ingrese los datos del repuesto:\n";
     cout<<"Nombre:\n";
@@ -265,12 +312,25 @@ void agregarRepuesto(){
     cout<<"Existencias:\n";
     cin>>re.existencias;
 
-    ofstream archivo("bin/datos/repuestos.cvs", ios::app);
-    archivo<<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: :"<<re.modelo<<","<<"Modelo de carro: "<<re.modelo_carro<<","
+    archivoTemp <<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: :"<<re.modelo<<","<<"Modelo de carro: "<<re.modelo_carro<<","
     <<"Year del carro: "<<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencias: "<<re.existencias<<endl;
-    archivo.close();
 
-    cout<<"Repuesto agregado";
+    archivoTemp<<repuesto<<endl;
+    archivo.close();
+    archivoTemp.close();
+
+    int confirmar;
+        cout << "Desea confirmar los cambios? (1 para confirmar, 0 para cancelar): ";
+        cin >> confirmar;
+
+        if(confirmar == 1){
+            remove("bin/datos/repuestos.csv");
+            rename("bin/datos/repuestos_temp.csv", "bin/datos/repuestos.csv");
+            cout << "Registro modificado exitosamente.\n";
+        }else{
+            remove("bin/datos/repuestos_temp.csv");
+            cout << "Operacion cancelada.\n";
+        }
 }
 
 //Funcion para leer la lista de repuestos
@@ -293,19 +353,19 @@ void leerRepuestos(){
 
 //Funcion consulta de vehiculo
 void consultaVehiculo(){
-    ifstream archivo("bin/datos/vehiculos.cvs");
+    ifstream archivo("bin/datos/vehiculos.csv");
     string vehiculos, Placa;
     bool encontrado = false;
     if(!archivo.is_open()){
         cout << "No se puede acceder al archivo" << endl;
         return;
     }
-    cout << "Ingrese la placa que desee buscar:";
+    cout << "Ingrese la placa que desee buscar: ";
     cin >> Placa;
 
     while(getline(archivo, vehiculos)){
         size_t posi = vehiculos.find(Placa);
-        if(posi !=string::npos && posi == 0){
+        if(posi !=string::npos && posi == 7){
             cout << vehiculos << endl;
             encontrado = true;
             break;
@@ -320,7 +380,7 @@ void consultaVehiculo(){
 
 //Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
 void consultaRepuesto(){
-    ifstream archivo("bin/datos/vehiculos.cvs");
+    ifstream archivo("bin/datos/vehiculos.csv");
     string Repuesto, nombreBuscar,modeloCarroBuscar;
     int anioCarroBuscar;
     bool encontrado = false;
@@ -375,7 +435,7 @@ void modificarVehiculo(const string& archivoOriginal,const string& archivoTempor
     while(getline(archivo,linea)){
         size_t pos = linea.find(identificador);
 
-        if(pos !=string::npos && pos ==8){
+        if(pos !=string::npos && pos ==7){
             encontrado = true;
             Vehiculo VehiculoModificado;
             //Solicitar datos del vehiculo
@@ -390,22 +450,32 @@ void modificarVehiculo(const string& archivoOriginal,const string& archivoTempor
             cin >> VehiculoModificado.color;
             cout << "Kilometraje:";
             cin >> VehiculoModificado.kilometraje;
+            cout<<"Year: ";
+            cin>>VehiculoModificado.year;
             cout << "Rentado (1 para si, 0 para no):";
             cin>> VehiculoModificado.rentado;
             cout << "Motor:";
             cin >> VehiculoModificado.motor;
             cout << "Precio de renta:";
             cin >> VehiculoModificado.precio_renta;
-            cout << "Fecha de entrega:";
-            cin >> VehiculoModificado.fecha_entrega;
+            if(VehiculoModificado.rentado==1){
+                 cout << "Fecha de entrega:";
+                 cin >> VehiculoModificado.fecha_entrega;
+                 cout <<"Cedula del cliente";
+                 cin>>VehiculoModificado.ced_cliente;
+            }else{
+                VehiculoModificado.fecha_entrega="N/A";
+                VehiculoModificado.ced_cliente = 0;
+            }
+
 
             //Escribir datos modificados al archivo temporal
-            tempArchivo << "Placa: " VehiculoModificado.placa << "," <<"Modelo: " VehiculoModificado.modelo << "," 
-            <<"Marca:"<< VehiculoModificado.marca << "," <<"Color:" << VehiculoModificado.color 
-            <<"Year: "<< "," << VehiculoModificado.year << "," <<"Kilometraje: "<< VehiculoModificado.kilometraje 
-            << "," << "Rentado: "<<VehiculoModificado.rentado << "," << "Motor: "<< VehiculoModificado.motor << "," 
+            tempArchivo << "Placa: " << VehiculoModificado.placa << "," <<"Modelo: " << VehiculoModificado.modelo << "," 
+            <<"Marca: "<< VehiculoModificado.marca << "," <<"Color:" << VehiculoModificado.color <<","
+            << VehiculoModificado.year << "," <<"Kilometraje: "<< VehiculoModificado.kilometraje 
+            << "," << "Rentado(1 si; 0 No): "<<VehiculoModificado.rentado << "," << "Motor: "<< VehiculoModificado.motor << "," 
             <<"Precio renta:"<< VehiculoModificado.precio_renta << "," 
-            <<"C.I" VehiculoModificado.ced_cliente << "," <<"Fecha de entrega: "<< VehiculoModificado.fecha_entrega << endl;
+            <<"C.I" << VehiculoModificado.ced_cliente << "," <<"Fecha de entrega: "<< VehiculoModificado.fecha_entrega << endl;
 
         }else {
             tempArchivo << linea << endl; // copiar linea sin modificar
@@ -590,7 +660,7 @@ int main(){
                         }
                         case 2:{
                         string placa;
-                        cout<<"Ingrese la placa del vehiculo";
+                        cout<<"Ingrese la placa del vehiculo: ";
                         cin>>placa;
                         borrarRegistro("bin/datos/vehiculos.csv", placa);
                         break;
@@ -631,7 +701,7 @@ int main(){
                 string identificador;
                 cout << "Ingrese la placa del vehiculo a modificar: ";
                 cin >> identificador;
-                
+                modificarVehiculo("bin/datos/vehiculos.csv", "bin/datos/temp_vehiculos.csv", identificador);
                 break;
             }
             case 3:{
