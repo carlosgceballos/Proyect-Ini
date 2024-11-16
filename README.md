@@ -2,20 +2,20 @@
 
 Este proyecto es un sistema de gestión de registros para un negocio de vehículos. Permite administrar registros de clientes, vehículos, y repuestos almacenados en archivos CSV.
 
-Estructura:
+Estructura del proyecto:
 proyecto-final/
 │
 ├── src/
-│   └── main.cpp             # Código fuente principal
+│   > main.cpp             # Código fuente principal
 │
 ├── bin/
-│   ├── datos/               # Carpeta con los archivos CSV
-│   │   ├── clientes.csv
-│   │   ├── vehiculos.csv
-│   │   └── repuestos.csv
-│   └── proyecto_final.exe   # Ejecutable del proyecto
+│   > datos/               # Carpeta con los archivos CSV
+│      >clientes.csv
+│      >vehiculos.csv
+│      >repuestos.csv
+│    >proyecto_final.exe   # Ejecutable del proyecto
 │
-└── README.md             
+|>README.md             
 
 Funciones:
 El programa cuenta con las siguientes opciones:
