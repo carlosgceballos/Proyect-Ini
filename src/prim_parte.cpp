@@ -157,12 +157,7 @@ void agregarCliente(){
     cout << "Activo (1 para si, 0 para no): "; 
     cin >> cl.activo;
 
-    ofstream archivo("bin/datos/clientes.csv", ios::app);
-    archivo <<"C.I: "<< cl.cedula << "," << "Nombre: "<< cl.nombre <<"," <<"Apellido: "<< cl.apellido << "," << "Email: "<< cl.email << "," << "Cantidad Autos Rentados: "<< cl.cantidad_vehiculos_rentados 
-    << "," <<"Direccion: "<< cl.direccion << "," << "Activo (1=Si, 0=No): "<< cl.activo << endl;
-    archivo.close();
-    cout << "Cliente agregado.";
-    cout << endl;
+   confirmarAgregado(cl, "bin/datos/clientes.csv", "bin/datos/clientes_temp.csv");
 }
 
 //funcion consulta de clientes
@@ -230,13 +225,7 @@ void agregarVehiculo(){
     cout << "Fecha de entrega:";
     cin >> vehi.fecha_entrega;
     
-    ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
-    archivo << "Placa: "<< vehi.placa<<","<<"Modelo:" <<vehi.modelo << "," <<"Marca: "<< vehi.marca<<"," 
-    <<"Color: "<< vehi.color << "," <<"Year:"<< vehi.year << "," <<"Kilometraje: "<< vehi.kilometraje << ","<<"Rentado: " 
-    << vehi.rentado << "," <<"Motor: " << vehi.motor << "," <<"Precio Renta: " << vehi.precio_renta << "," <<"C.I Cliente: "<< 
-    vehi.ced_cliente << "," <<"Fecha de entrega: " << vehi.fecha_entrega << endl;
-    archivo.close();
-    cout << "Vehiculo agregado.\n";
+    confirmarAgregado(vehi, "bin/datos/vehiculos.csv", "bin/datos/vehiculos_temp.csv");
 
 }
 
@@ -259,24 +248,13 @@ void agregarRepuesto(){
     cout<<"Existencias:\n";
     cin>>re.existencias;
 
-    ofstream archivo("bin/datos/repuestos.cvs", ios::app);
-    archivo<<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: :"<<re.modelo<<","<<"Modelo de carro: "<<re.modelo_carro<<","
-    <<"Year del carro: "<<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencias: "<<re.existencias<<endl;
-    archivo.close();
-
-    cout<<"Repuesto agregado";
-
+    confirmarAgregado(re, "bin/datos/repuestos.csv", "bin/datos/repuestos_temp.csv");
 }
 
 void actualizarDatos(){
 
 }
 
-void borrarDatos(){
-
-
-
-}
 //Funcion para leer la lista de repuestos
 
 void leerRepuestos(){
@@ -321,9 +299,10 @@ void consultaVehiculo(){
     archivo.close();
 
 }
-//Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
 
+//Funcion para consultar un repuesto especifico por nombre, modelo de carro, y año
 void consultaRepuesto(){
+
     ifstream archivo("bin/datos/vehiculos.cvs");
     string Repuesto, nombreBuscar,modeloCarroBuscar;
     int anioCarroBuscar;
@@ -364,6 +343,7 @@ void consultaRepuesto(){
     archivo.close();
 
 }
+
 //Funcion para no alterar archivos hasta confirmarlos 
 template <typename T>//nos permite trabajar con cualquier tipo de dato
 void confirmarAgregado(const T& nuevoRegistro,const string& archivoOriginal,const string& archivoTemporal){
@@ -401,7 +381,7 @@ void confirmarAgregado(const T& nuevoRegistro,const string& archivoOriginal,cons
         cout << "Operacion cancelada. No se realizo ningun cambio.\n";
     }
     
-      
+     
 }
 
 //Funcion actualizar
@@ -417,7 +397,7 @@ void modificarRegistro(const string& archivoOriginal, const string& archivoTempo
     string linea;
     bool encontrado = false;
 
-    //Leemos cada linea ybuscamos el identificador 
+    //Leemos cada linea y buscamos el identificador 
     while(getline(archivo, linea)){
         size_tpos = linea.find(identificador);
 
@@ -527,25 +507,106 @@ int main(){
 
     int opcion;
     do{
-        cout <<"1. Agregar Cliente:\n";
-        cout <<"2. Agregar Vehiculo:\n";
-        cout <<"3. Agregar Repuesto:\n";
+        cout <<"1. Agregar registro:\n";
+        cout <<"2. Consultar dato en un registro\n";
+        cout <<"3. Borrar registro:\n";
         cout <<"4. Actualizar Dato:\n";
-        cout <<"5. Borrar Dato:\n";
+        cout <<"";
         cout << "0. Salir:\n";
         cin >> opcion;
 
         switch(opcion){
-            case 1:
-            agregarCliente();
+            case 1: {
+            int op;
+            do{
+                cout<<"1. Agregar cliente."<<endl;
+                cout<<"2. Agregar vehiculo."<<endl;
+                cout<<"3. Agregar repuesto."<<endl;
+                cout<<"0. Cancelar." <<endl;
+                cin>>op;
+                switch(op){
+                    case 1:
+                agregarCliente();
+                break;
+                case 2:
+                agregarVehiculo();
+                break;
+                case 3:
+                agregarRepuesto();
+                case 0:
+                cout<<"Regresando al menu principal."<<endl;
+                break;
+                default:
+                cout<<"Opcion invalida.";
+            }
+            }while(op!=0);
             break;
+            }
+            case 2: {
+                int op;
+                do{
+                    cout<<"1. Consultar cliente."<<endl;
+                    cout<<"2. Consultar vehiculo."<<endl;
+                    cout<<"3. Consultar repuesto."<<endl;
+                    cout<<"0. Regresar al menu principal"<<endl;
+                    cin>>op;
+                    switch(op){
+                        case 1:
+                        ConsCl();
+                        break;
+                        case 2:
+                        consultaVehiculo();
+                        break;
+                        case 3:
+                        consultaRepuesto();
+                        break;
+                        case 0:
+                        cout<<"Regresando al menu principal."<<endl;
+                        break;
+                        default:
+                        cout<<"Opcion invalida";
+                    }
 
-            case 2:
-            agregarVehiculo();
+                }while(op!=0);
             break;
-
-            case 3:
-            agregarRepuesto();
+            }
+            case 3:{
+                int op;
+                do{
+                    cout<<"1. Borrar registro de cliente."<<endl;
+                    cout<<"2. Borrar registro de vehiculo."<<endl;
+                    cout<<"3. Borrar registro de Repuesto."<<endl;
+                    cout<<"0. Regresar al menu principal."<<endl;
+                    cin>>op;
+                    switch(op){
+                        case 1:{
+                        string cedula;
+                        cout<<"Ingrese la cedula del cliente: ";
+                        cin>>cedula;
+                        borrarRegistro("bin/datos/clientes.csv", cedula);
+                        break;
+                        }
+                        case 2:{
+                        string placa;
+                        cout<<"Ingrese la placa del vehiculo";
+                        cin>>placa;
+                        borrarRegistro("bin/datos/vehiculos.csv", placa);
+                        break;
+                        }
+                        case 3:{
+                            borrarRepuesto();
+                        break;
+                        }
+                        case 0:
+                        cout<<"Regresando al menu principal."<<endl;
+                        break;
+                        default:
+                        cout<<"Opcion invalida";
+                    }
+                }while(op !=0);
+                break;
+            }
+    
             break;
 
             case 4:
@@ -553,7 +614,7 @@ int main(){
             break;
 
             case 5:
-            borrarDatos();
+        
             break;
 
             case 0:
@@ -565,8 +626,6 @@ int main(){
         }
     }while(opcion !=0);
 
-
-
     return 0;
-}
+    }
 
