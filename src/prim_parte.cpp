@@ -226,15 +226,20 @@ void agregarVehiculo(){
     cin >> vehi.motor;
     cout << "Precio de renta:";
     cin >> vehi.precio_renta;
+    if(vehi.rentado==1){
     cout << "Cedula del cliente:";
     cin >> vehi.ced_cliente;
     cout << "Fecha de entrega:";
     cin >> vehi.fecha_entrega;
-    
+    }else{
+        vehi.ced_cliente = 0;
+        vehi.fecha_entrega ="N/A";
+    }
+
     ofstream archivo("bin/datos/vehiculos.csv", ios:: app);
-    archivo << "Placa: "<< vehi.placa<<","<<"Modelo:" <<vehi.modelo << "," <<"Marca: "<< vehi.marca<<"," 
+    archivo << "Placa: "<< vehi.placa<<","<<"Modelo: " <<vehi.modelo << "," <<"Marca: "<< vehi.marca<<"," 
     <<"Color: "<< vehi.color << "," <<"Year:"<< vehi.year << "," <<"Kilometraje: "<< vehi.kilometraje << ","<<"Rentado: " 
-    << vehi.rentado << "," <<"Motor: " << vehi.motor << "," <<"Precio Renta: " << vehi.precio_renta << "," <<"C.I Cliente: "<< 
+    << vehi.rentado << "," <<"Motor: " << vehi.motor << "," <<"Precio Renta: " << vehi.precio_renta << "," <<"C.I: "<< 
     vehi.ced_cliente << "," <<"Fecha de entrega: " << vehi.fecha_entrega << endl;
     archivo.close();
     cout << "Vehiculo agregado.\n";
@@ -559,10 +564,16 @@ int main(){
                 break;
             }
             case 3:{
-                string identificador;
+                string nombreRepuesto;
+                string modeloCarro;
+                int anioCarro;
                 cout << "Ingrese el nombre del repuesto a modificar: ";
-                cin >> identificador;
-                
+                cin >> nombreRepuesto;
+                cout << "Ingrese el modelo del carro asociado al repuesto: ";
+                cin >> modeloCarro;
+                cout << "Ingrese el año del carro asociado al repuesto: ";
+                cin >> anioCarro;
+
                 break;
             }
             case 0:{
