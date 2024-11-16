@@ -229,7 +229,7 @@ Vehiculo VehiculoModificado;
             //Solicitar datos del vehiculo
             string vehiculo;
             while(getline(archivo,vehiculo)){
-                tempArchivo<<vehiculo;
+                tempArchivo<<vehiculo<<endl;
             }
             cout << "Ingrese los nuevos datos del vehiculo:\n";
             cout << "Placa: ";
@@ -266,7 +266,7 @@ Vehiculo VehiculoModificado;
             << VehiculoModificado.year << "," <<"Kilometraje: "<< VehiculoModificado.kilometraje 
             << "," << "Rentado(1 si; 0 No): "<<VehiculoModificado.rentado << "," << "Motor: "<< VehiculoModificado.motor << "," 
             <<"Precio renta: "<< VehiculoModificado.precio_renta << "," 
-            <<"C.I: " << VehiculoModificado.ced_cliente << "," <<"Fecha de entrega: "<< VehiculoModificado.fecha_entrega << endl;
+            <<"C.I: " << VehiculoModificado.ced_cliente << "," <<"Fecha de entrega: "<< VehiculoModificado.fecha_entrega<<endl;
 
             tempArchivo << vehiculo << endl; // copiar linea sin modificar
 
@@ -293,7 +293,7 @@ void agregarRepuesto(){
     ofstream archivoTemp("bin/datos/repuestos_temp.csv", ios::app);
     string repuesto;
     while(getline(archivo, repuesto)){
-        archivoTemp<<repuesto;
+        archivoTemp<<repuesto<<endl;
     }
     Repuesto re;
     cout<<"Ingrese los datos del repuesto:\n";
@@ -313,7 +313,7 @@ void agregarRepuesto(){
     cin>>re.existencias;
 
     archivoTemp <<"Nombre: "<< re.nombre<<","<<"Marca: "<<re.marca<<","<<"Modelo: "<<re.modelo<<","<<re.modelo_carro<<","
-    <<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencia: "<<re.existencias<<endl;
+    <<re.anio_carro<<","<<"Precio: "<<re.precio<<","<<"Existencia: "<<re.existencias;
 
     archivoTemp<<repuesto<<endl;
     archivo.close();
@@ -395,7 +395,7 @@ void consultaRepuesto(){
     getline(cin, nombreBuscar);
     cout << "Ingrese el modelo del carro asociado al repuesto: ";
     getline(cin, modeloCarroBuscar);
-    cout << "Ingrese el año del carro asociado al repuesto: ";
+    cout << "Ingrese el year del carro asociado al repuesto: ";
     cin >> anioCarroBuscar;
 
     //Recorrer el archivo linea por linea 
@@ -433,30 +433,30 @@ void modificarVehiculo(const string& archivoOriginal,const string& archivoTempor
             Vehiculo VehiculoModificado;
             //Solicitar datos del vehiculo
             cout << "Ingrese los nuevos datos del vehiculo:\n";
-            cout << "Placa:";
+            cout << "Placa: ";
             cin >> VehiculoModificado.placa;
-            cout << "Modelo:";
+            cout << "Modelo: ";
             cin >> VehiculoModificado.modelo;
-            cout << "Marca:";
+            cout << "Marca: ";
             cin >> VehiculoModificado.marca;
-            cout << "Color:";
+            cout << "Color: ";
             cin >> VehiculoModificado.color;
-            cout << "Kilometraje:";
+            cout << "Kilometraje: ";
             cin >> VehiculoModificado.kilometraje;
             cout<<"Year: ";
             cin>>VehiculoModificado.year;
             cout << "Rentado (1 para si, 0 para no):";
             cin>> VehiculoModificado.rentado;
-            cout << "Motor:";
+            cout << "Motor: ";
             cin >> VehiculoModificado.motor;
-            cout << "Precio de renta:";
+            cout << "Precio de renta: ";
             cin >> VehiculoModificado.precio_renta;
             if(VehiculoModificado.rentado==1){
-                 cout << "Fecha de entrega:";
+                 cout << "Fecha de entrega: ";
                  cin >> VehiculoModificado.fecha_entrega;
-                 cout <<"Cedula del cliente";
+                 cout <<"Cedula del cliente ";
                  cin>>VehiculoModificado.ced_cliente;
-            }else{
+            }else{//si el vehiculo no fue rentado la fecha de entrega pasara a N/A(No tiene) y la cedula del cliente pasara a 0 ya que no tiene cliente
                 VehiculoModificado.fecha_entrega="N/A";
                 VehiculoModificado.ced_cliente = 0;
             }
@@ -593,15 +593,15 @@ void modificarRepuesto(const string&archivoOriginal,const string&archivoTemporal
 
             //Solicitar los nuevos datos del repuesto
             cout << "Ingrese los nuevos datos del repuesto:\n";
-            cout << "Nombre: ";
+            cout << "Nombre del repuesto: ";
             cin >> repuestoModificado.nombre;
-            cout << "Marca: ";
+            cout << "Marca del repuesto: ";
             cin >> repuestoModificado.marca;
-            cout << "Modelo: ";
+            cout << "Modelo del repuesto: ";
             cin >> repuestoModificado.modelo;
             cout << "Modelo del carro: ";
             cin >> repuestoModificado.modelo_carro;
-            cout << "Año del carro: ";
+            cout << "Year del carro: ";
             cin >> repuestoModificado.anio_carro;
             cout << "Precio: ";
             cin >> repuestoModificado.precio;
