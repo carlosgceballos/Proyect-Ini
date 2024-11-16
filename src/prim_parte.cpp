@@ -401,7 +401,125 @@ void confirmarAgregado(const T& nuevoRegistro,const string& archivoOriginal,cons
         cout << "Operacion cancelada. No se realizo ningun cambio.\n";
     }
     
-     
+      
+}
+
+//Funcion actualizar
+template <typename T> 
+void modificarRegistro(const string& archivoOriginal, const string& archivoTemporal, const string& identificador){
+    ifstream archivo(archivoOriginal);
+    ofstream tempArchivo(archivoTemporal);
+
+    if(!archivo.is_open()||! tempArchivo.is_open()){
+        cout << "No se pudo abrir uno de los archivos.\n";
+        return;
+    }
+    string linea;
+    bool encontrado = false;
+
+    //Leemos cada linea ybuscamos el identificador 
+    while(getline(archivo, linea)){
+        size_tpos = linea.find(identificador);
+
+        if(pos != string::npos && pos== 0) {
+            //Identificador encontrado al inicio de la linea
+
+            encontrado= true;
+            T registroModificado;
+
+            //Pedir datos dependiendo del tipo de registro 
+            if constexpr(is_same<T,Cliente>::value){
+                cout << "Ingrese los nuevos datos del cliente:\n";
+                cout << "Cedula:";
+                cin >> registroModificado.cedula;
+                cout << "Nombre:";
+                cin >> registroModificado.nombre;
+                cout << "Apellido:";
+                cin >> registroModificado.apellido;
+                cout << "Email:";
+                cin >> registroModificado.email;
+                cout << "Cantidad de vehiculos rentados:";
+                cin >> registroModificado.cantidad_vehiculos_rentados;
+                cout << "Direccion:";
+                cin.ignore();
+                getline(cin, registroModificado.direccion);
+                cout << "Archivo(1 para si,0 para no):";
+                cin >> registroModificado.activo;
+
+                //Escribimos los datos nuevos en el archivo temporal
+                tempArchivo << registroModificado.cedula << "," << registroModificado.nombre << "," << registroModificado.apellido << "," << registroModificado.email << "," << registroModificado.cantidad_vehiculo_rentados << "," << registroModificado.direccion << "," << registroModificado.activo << endl;
+
+            }else if constexpr(is_same <T, vehiculo>::value){
+                cout << "Ingrese los nuevos datos del vehiculo:\n";
+                cout << "Placa:";
+                cin >> registroModificado.placa;
+                cout << "Modelo:";
+                cin >> registroModificado.modelo;
+                cout << "Marca";
+                cin >> registroModificado.marca;
+                cout << "Color";
+                cin >> registroModificado.color;
+                cout << "Kilometraje";
+                cin >> registroModificado.kilometraje;
+                cout << "Rentado (1 para si, 0 para no):";
+                cin >> registroModificado.rentado;
+                cout << "Motor:";
+                cin >> registroModificado.motor;
+                cout << "Precio de renta:";
+                cin >> registroModificado.precio_renta;
+                cout << "Fecha de entrega:";
+                cin >> registroModificado.fecha_entrega;
+                
+                tempArchivo << registroModificado.placa << "," << registroModificado.modelo << "," << registroModificado.marca << "," << registroModificado.color << "," << registroModificado.year << "," << registroModificado.kilometraje << "," << registroModificado.rentado << "," << registroModificado.motor << "," << registroModificado.precio_renta << "," << registroModificado.ced_cliente << "," << registroModificado.fecha_entrega << "," << endl;
+
+
+            }else if constexpr (is_same<T,Repuesto>::value){
+                cout << "Ingrese los nuevos datos del repuesto:\n";
+                cout << "Nombre:";
+                cin >> registroModificado.nombre;
+                cout << "Marca:";
+                cin >> registroModificado.marca;
+                cout << "Modelo:";
+                cin >> registroModificado.modelo;
+                cout << "Modelo de carro:";
+                cin >> registroModificado.modelo_carro;
+                cout << "Año del carro:";
+                cin >> registroModificado.anio_carro;
+                cout << "Precio:";
+                cin >> registroModificado.precio;
+                cout << "Existencias:";
+                cin >> registroModificado.existencias;
+
+                tempArchivo << registroModificado.nombre << "," << registroModificado.marca << "," << registroModificado.modelo << "," << registroModificado.modelo_carro << "," << registroModificado.anio_carro << "," << registroModificado.precio << "," << registroModificado.existencias << endl;
+
+            }
+        }else{
+            //Si no es el registro que queremos modificar,lo copiamos directamente
+            tempArchivo << linea << endl;
+        }
+    }
+    archivo.close();
+    tempArchivo.close();
+
+    if(encontrado){
+        int confirmar;
+        cout << "Desea confirmar la modificacion? (1 para confirmar, 0 para cancelar):";
+        cin >> confirmar;
+
+        if(confirmar ==1){
+            remove(archivoOriginal.c_str());
+            rename(archivoTemporal.c_str(), archivoOrginal.c_str());
+            cout << "Registro modificado exitosamente.\n";
+
+        }else{
+            remove(archivoTemporal.c_str());
+            cout << "Operacion cancelada. No se realizo ningun cambio.\n";
+        }
+    }else{
+        remove(archivoTemporal.c_str());
+        cout << "No se encontro ningun registro con el identificador especificado.\n";
+        remove(archivoTemporal.c_str());
+    }
 }
 
 
