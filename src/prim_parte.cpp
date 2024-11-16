@@ -360,7 +360,78 @@ void consultaRepuesto(){
     archivo.close();
 
 }
+//Funcion para modificar datos de vehiculos
+void modificarVehiculo(const string& archivoOriginal,const string& archivoTemporal, const string& identificador){
+    ifstream archivo(archivoOriginal);
+    ofstream tempArchivo(archivoTemporal);
 
+    if(!archivo.is_open()||!tempArchivo.is_open()){
+        cout << "No se pudo abrir uno de los archivos.\n";
+        return;
+    }
+    string linea;
+    bool encontrado = false;
+
+    while(getline(archivo,linea)){
+        size_t pos = linea.find(identificador);
+
+        if(pos !=string::npos && pos ==8){
+            encontrado = true;
+            Vehiculo VehiculoModificado;
+            //Solicitar datos del vehiculo
+            cout << "Ingrese los nuevos datos del vehiculo:\n";
+            cout << "Placa:";
+            cin >> VehiculoModificado.placa;
+            cout << "Modelo:";
+            cin >> VehiculoModificado.modelo;
+            cout << "Marca:";
+            cin >> VehiculoModificado.marca;
+            cout << "Color:";
+            cin >> VehiculoModificado.color;
+            cout << "Kilometraje:";
+            cin >> VehiculoModificado.kilometraje;
+            cout << "Rentado (1 para si, 0 para no):";
+            cin>> VehiculoModificado.rentado;
+            cout << "Motor:";
+            cin >> VehiculoModificado.motor;
+            cout << "Precio de renta:";
+            cin >> VehiculoModificado.precio_renta;
+            cout << "Fecha de entrega:";
+            cin >> VehiculoModificado.fecha_entrega;
+
+            //Escribir datos modificados al archivo temporal
+            tempArchivo << "Placa: " VehiculoModificado.placa << "," <<"Modelo: " VehiculoModificado.modelo << "," 
+            <<"Marca:"<< VehiculoModificado.marca << "," <<"Color:" << VehiculoModificado.color 
+            <<"Year: "<< "," << VehiculoModificado.year << "," <<"Kilometraje: "<< VehiculoModificado.kilometraje 
+            << "," << "Rentado: "<<VehiculoModificado.rentado << "," << "Motor: "<< VehiculoModificado.motor << "," 
+            <<"Precio renta:"<< VehiculoModificado.precio_renta << "," 
+            <<"C.I" VehiculoModificado.ced_cliente << "," <<"Fecha de entrega: "<< VehiculoModificado.fecha_entrega << endl;
+
+        }else {
+            tempArchivo << linea << endl; // copiar linea sin modificar
+        }
+    }
+    archivo.close();
+    tempArchivo.close();
+
+    if(encontrado){
+        int confirmar;
+        cout << "Desea confirmar los cambios? (1 para confirmar, 0 para cancelar):";
+        cin >> confirmar;
+
+        if(confirmar == 1){
+            remove(archivoOriginal.c_str());
+            rename(archivoTemporal.c_str(),archivoOriginal.c_str());
+            cout << "Registro modificado exitosamente.\n";
+        }else{
+            remove(archivoTemporal.c_str());
+            cout << "Operacion cancelada.No se realizaron cambios\n";
+        }
+    }else{
+        remove(archivoTemporal.c_str());
+        cout << "No se encontro un vehiculo con el identificador especificado.\n";
+    }
+}
 //funcion para modificar clientes
 void modificarCliente(const string& archivoOriginal, const string& archivoTemporal, const string& identificador) {
     ifstream archivo(archivoOriginal);
