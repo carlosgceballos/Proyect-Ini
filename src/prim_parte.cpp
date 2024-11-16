@@ -135,6 +135,7 @@ void leerListaClientes(){
     while (getline(archivo, cliente)) {
         cout << cliente << endl;
     }
+    cout<<endl;
     archivo.close();
 }
 
@@ -217,6 +218,7 @@ void leerVehiculos(){
     while (getline(archivo,Vehiculo)){
         cout << Vehiculo << endl;
     }
+    cout<<endl;
     archivo.close();
 }
 
@@ -347,6 +349,7 @@ void leerRepuestos(){
     while(getline(archivo, Repuesto)){
         cout << Repuesto << endl;
     }
+    cout<<endl;
     archivo.close();
 
 }
@@ -700,6 +703,7 @@ int main(){
                         break;
                         case 0:
                         cout<<"Regresando al menu principal."<<endl;
+                        cout<<endl;
                         break;
                         default:
                         cout<<"Opcion invalida";
@@ -737,6 +741,7 @@ int main(){
                         }
                         case 0:
                         cout<<"Regresando al menu principal."<<endl;
+                        cout<<endl;
                         break;
                         default:
                         cout<<"Opcion invalida";
@@ -784,6 +789,7 @@ int main(){
             }
             case 0:{
                 cout << "Regresando al menu principal." << endl;
+                cout<<endl;
                 break;
             }
             default:
@@ -812,6 +818,7 @@ int main(){
                 break;
                 case 0:
                 cout<<"Regresando al menu principal"<<endl;
+                cout<<endl;
                 break;
                 default:
                 cout<<"Opcion invalida"<<endl;
