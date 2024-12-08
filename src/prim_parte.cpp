@@ -1,9 +1,161 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <typeinfo>
+#include "../src/Usuarios/Usuario.h"
+#include "../src/Usuarios/usuario.cpp"
 
-using namespace std;
+Usuario* autenticarUsuario(Usuario** usuarios, int cantidad) {
+    string usuario, password;
+    cout << "Ingrese el nombre de usuario: ";
+    cin >> usuario;
+    cout << "Ingrese la password: ";
+    cin >> password;
+
+    for (int i = 0; i < cantidad; i++) {
+        if (usuarios[i]->verificarCredenciales(usuario, password)) {
+            cout << "Autenticacion exitosa.\n";
+            return usuarios[i];  // Devuelve el puntero al usuario autenticado
+        }
+    }
+
+    cout << "Credenciales incorrectas.\n";
+    return nullptr;
+}
+
+int main() {
+    int cantidadUsuarios = 0, cantidadVehiculos = 0, cantidadRepuestos = 0, cantidadClientes = 0;
+    
+    // Cargar datos desde archivos
+Usuario** usuarios = Usuario::cargarUsuarios(cantidadUsuarios);
+
+Usuario* usuarioAutenticado = nullptr;
+    do {
+        usuarioAutenticado = autenticarUsuario(usuarios, cantidadUsuarios);
+    } while (usuarioAutenticado == nullptr);
+
+    string rol = usuarioAutenticado->getRol();
+    cout << "Rol del usuario autenticado: " << rol << endl;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 struct Vehiculo{
   string modelo, marca, placa, color, motor, fecha_entrega;
@@ -642,8 +794,7 @@ void modificarRepuesto(const string&archivoOriginal,const string&archivoTemporal
     }
 }
 
-int main(){
-
+void exmain(){
     int opcion;
     do{
         cout <<"1. Agregar registro:\n";
@@ -834,7 +985,5 @@ int main(){
             cout << "Opcion no valida, intente de nuevo. \n ";
         }
     }while(opcion !=0);
-
-    return 0;
     }
 
