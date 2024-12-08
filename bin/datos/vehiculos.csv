@@ -1,104 +1,74 @@
-Placa,Modelo,Marca,Color,Año,Kilometraje,Rentado,Motor,Precio Renta,C.I Cliente,Fecha de entrega
-Placa: jjj,Modelo: 1,Marca: 11,Color:1,1,Kilometraje: 1,Rentado(1 si; 0 No): 1,Motor: 1,Precio renta:1,C.I1,Fecha de entrega: 1
-Placa: BW60IF,Ranger,Ford,Red,1985,176925,1,Motor: V6,1269,C.I: 68724531,7/13/2024
-Placa: EQ69UM,Challenger,Mitsubishi,Mauv,1998,89994,0,Motor: V12,873,C.I: 99567312,10/9/2024
-Placa: OM74CF,Stratus,Dodge,Maroon,2004,88570,0,Motor: V8,1791,C.I: 54889312,1/4/2024
-Placa: HI24OF,Mystique,Mercury,Blue,1998,125792,1,Motor: V6,541,C.I: 19594463,10/6/2025
-Placa: EG66HQ,Tribeca,Subaru,Fuscia,2007,86409,0,Motor: V12,1535,C.I: 62231951,9/27/2025
-Placa: FP16LR,Crown Victoria,Ford,Crimson,2001,146430,0,Motor: V6,1114,C.I: 61630930,8/6/2024
-Placa: EF45VV,Daewoo Magnus,Suzuki,Purple,2004,112912,0,Motor: V8,1432,C.I: 24362442,8/28/2025
-Placa: UY19DH,Grand Voyager,Plymouth,Yellow,1999,115857,0,Motor: V10,1589,C.I: 36547197,9/30/2025
-Placa: OV89BG,9000,Saab,Yellow,1989,80971,0,Motor: V12,1628,C.I: 83510204,1/8/2025
-Placa: EM60AG,Impala,Chevrolet,Turquoise,2008,132051,0,Motor: V10,572,C.I: 73948810,10/22/2025
-Placa: VE62ZA,Navajo,Mazda,Aquamarine,1994,103744,0,Motor: V12,1015,C.I: 50636141,9/20/2024
-Placa: RJ13XN,SC,Lexus,Green,1997,187209,1,Motor: V12,941,C.I: 12612841,7/5/2024
-Placa: JZ14PJ,Continental GTC,Bentley,Red,2012,60283,0,Motor: V12,1452,C.I: 35605607,3/23/2025
-Placa: UD77HV,Aveo,Chevrolet,Green,2004,31181,0,Motor: V6,1198,C.I: 80083414,5/3/2025
-Placa: AU07YW,Escalade,Cadillac,Pink,2009,156396,1,Motor: V8,1121,C.I: 13217429,6/21/2024
-Placa: CO25CE,Swift,Suzuki,Pink,1995,177821,1,Motor: V12,1372,C.I: 78896191,5/30/2025
-Placa: ZC75ZX,E250,Ford,Red,2008,120354,1,Motor: V12,970,C.I: 15826967,7/1/2025
-Placa: MA79UJ,S10 Blazer,Chevrolet,Teal,1993,82773,0,Motor: V12,1944,C.I: 62724217,11/21/2024
-Placa: KX81AN,Sportvan G30,Chevrolet,Mauv,1993,48543,0,Motor: V12,1189,C.I: 57187335,12/13/2025
-Placa: NU09CE,Grand Marquis,Mercury,Crimson,2002,128664,1,Motor: V10,1686,C.I: 37423512,8/25/2024
-Placa: CW18ZC,LX,Lexus,Red,2005,59228,1,Motor: V12,1109,C.I: 39762815,12/7/2023
-Placa: DM14CJ,Mini Cooper,Austin,Maroon,1961,47666,1,Motor: V6,1902,C.I: 11599055,7/7/2024
-Placa: NO70LJ,Econoline E150,Ford,Blue,1995,104324,0,Motor: V6,1932,C.I: 56908850,1/10/2025
-Placa: HB39YL,DeVille,Cadillac,Goldenrod,1998,42112,0,Motor: V10,918,C.I: 29377152,8/30/2024
-Placa: LC45BI,300M,Chrysler,Fuscia,2000,182343,0,Motor: V8,1941,C.I: 13482284,11/12/2024
-Placa: ZC49QU,Prizm,Geo,Goldenrod,1995,160777,1,Motor: V6,1982,C.I: 89500609,5/20/2024
-Placa: IF29WT,Yukon XL 1500,GMC,Teal,2011,33510,1,Motor: V10,1001,C.I: 91172308,2/2/2025
-Placa: QG89FD,Rabbit,Volkswagen,Turquoise,2009,170021,1,Motor: V12,1867,C.I: 19737184,7/22/2025
-Placa: YJ90PJ,XLR,Cadillac,Pink,2005,171840,1,Motor: V10,1559,C.I: 90710346,12/8/2025
-Placa: GS50QK,Grand Am,Pontiac,Maroon,1994,171143,0,Motor: V8,1899,C.I: 20198145,6/6/2024
-Placa: HT24CH,Insight,Honda,Turquoise,2000,161451,1,Motor: V6,1345,C.I: 53682746,9/27/2024
-Placa: GS38NZ,M-Class,Mercedes-Benz,Blue,2007,61274,0,Motor: V12,1252,C.I: 12616037,1/31/2024
-Placa: EE92FM,Optima,Kia,Fuscia,2011,109773,0,Motor: V6,1780,C.I: 22436950,12/13/2024
-Placa: HV33RP,Rendezvous,Buick,Pink,2003,148509,1,Motor: V6,1340,C.I: 70890221,2/19/2025
-Placa: XU22KT,Galant,Mitsubishi,Teal,2006,166575,1,Motor: V6,944,C.I: 83742111,3/5/2025
-Placa: LZ07AB,Tundra,Toyota,Violet,2005,119157,0,Motor: V6,1945,C.I: 80261786,11/3/2025
-Placa: BP38ZX,Crown Victoria,Ford,Yellow,2008,158129,1,Motor: V12,712,C.I: 41010315,6/12/2024
-Placa: DW28HT,Versa,Nissan,Red,2011,103543,0,Motor: V10,1425,C.I: 74174232,3/1/2025
-Placa: QO27OA,MR2,Toyota,Indigo,1986,136631,1,Motor: V12,659,C.I: 16655058,1/10/2024
-Placa: JE04KO,Ghost,Rolls-Royce,Turquoise,2012,8210,0,Motor: V10,577,C.I: 30270330,7/13/2024
-Placa: ZT71YZ,Maxima,Nissan,Yellow,1996,78399,0,Motor: V6,1339,C.I: 47156149,7/23/2024
-Placa: FS48WK,Eclipse,Mitsubishi,Indigo,2000,121971,0,Motor: V10,904,C.I: 31845309,12/8/2025
-Placa: LA04SB,E250,Ford,Aquamarine,2010,67329,0,Motor: V12,1310,C.I: 66401156,10/3/2025
-Placa: GJ80LA,Coachbuilder,Buick,Orange,1992,88508,1,Motor: V8,1444,C.I: 45647917,4/4/2024
-Placa: VD47MN,Prelude,Honda,Orange,2000,110136,0,Motor: V8,1226,C.I: 35842639,11/22/2024
-Placa: SD78PI,LS,Lexus,Mauv,2003,180588,0,Motor: V8,1836,C.I: 49807580,12/16/2025
-Placa: PX53UG,CC,Volkswagen,Yellow,2010,120761,0,Motor: V10,1296,C.I: 49053170,9/3/2024
-Placa: YP05LZ,A4,Audi,Orange,2010,41835,0,Motor: V10,633,C.I: 83120129,1/15/2025
-Placa: DB45KO,Rendezvous,Buick,Mauv,2004,93769,0,Motor: V8,948,C.I: 58056751,2/1/2025
-Placa: IW44RU,Sorento,Kia,Khaki,2007,109451,0,Motor: V8,501,C.I: 86015348,11/25/2024
-Placa: MX34YO,Savana 1500,GMC,Maroon,2005,80692,0,Motor: V8,612,C.I: 83197890,1/29/2025
-Placa: QV41EB,Wrangler,Jeep,Violet,2002,30058,0,Motor: V6,1710,C.I: 66844123,8/20/2025
-Placa: WI95QQ,Cavalier,Chevrolet,Fuscia,1992,61577,1,Motor: V8,1542,C.I: 93225321,12/19/2025
-Placa: AD88SZ,500SEC,Mercedes-Benz,Red,1993,33134,0,Motor: V6,547,C.I: 60837835,11/13/2024
-Placa: VY22NK,E-Class,Mercedes-Benz,Goldenrod,2009,33901,0,Motor: V8,571,C.I: 48687689,9/12/2024
-Placa: EJ71DZ,Canyon,GMC,Purple,2004,169460,1,Motor: V12,752,C.I: 26722401,12/9/2023
-Placa: SK50PW,E-Class,Mercedes-Benz,Blue,2006,138663,0,Motor: V12,1318,C.I: 44027939,12/8/2024
-Placa: IH73CK,FX,Infiniti,Aquamarine,2009,103864,1,Motor: V10,1785,C.I: 52680613,12/13/2024
-Placa: AJ54ZS,Caravan,Dodge,Teal,2012,17335,0,Motor: V10,575,C.I: 52736078,12/14/2025
-Placa: RH60EN,2500,GMC,Purple,1996,14097,1,Motor: V10,1002,C.I: 40929775,6/7/2024
-Placa: UK31KH,Express 2500,Chevrolet,Teal,2006,40843,1,Motor: V8,952,C.I: 55728074,5/11/2024
-Placa: QU16KB,XK Series,Jaguar,Green,2003,20458,1,Motor: V12,1996,C.I: 62133490,2/18/2025
-Placa: KD88TH,Marquis,Mercury,Mauv,1985,104778,0,Motor: V6,1405,C.I: 93186974,4/22/2024
-Placa: BZ83XH,Astro,Chevrolet,Blue,2000,118098,0,Motor: V10,956,C.I: 42989079,12/3/2024
-Placa: WH85PM,A4,Audi,Puce,2001,32326,1,Motor: V10,723,C.I: 98257209,3/6/2024
-Placa: BB89BN,2500,Chevrolet,Teal,1992,104585,1,Motor: V8,1637,C.I: 73726797,3/21/2025
-Placa: BC28DE,Tiburon,Hyundai,Green,1999,29925,1,Motor: V6,1316,C.I: 74232905,6/15/2024
-Placa: UJ87PY,Sunfire,Pontiac,Orange,2001,159799,0,Motor: V6,1142,C.I: 50444513,11/20/2024
-Placa: BT80IB,Explorer,Ford,Aquamarine,1995,103656,1,Motor: V10,1414,C.I: 63950448,9/10/2025
-Placa: MN73LT,2500,GMC,Orange,1995,103780,0,Motor: V12,535,C.I: 64428868,8/1/2025
-Placa: MN19MP,Ram 1500,Dodge,Turquoise,2008,170682,0,Motor: V10,1639,C.I: 69806202,2/29/2024
-Placa: GE61CU,Cobalt,Chevrolet,Maroon,2009,112647,1,Motor: V10,645,C.I: 95181710,11/18/2025
-Placa: RJ57UG,Focus,Ford,Green,2008,161665,0,Motor: V8,1781,C.I: 55580722,1/26/2025
-Placa: GN37NR,MKX,Lincoln,Goldenrod,2009,130726,0,Motor: V12,1673,C.I: 49651458,10/19/2024
-Placa: MZ68LR,Rio,Kia,Mauv,2002,16975,1,Motor: V8,1949,C.I: 10205613,5/12/2024
-Placa: NT40XW,Boxster,Porsche,Fuscia,2004,133413,1,Motor: V10,779,C.I: 27118880,12/29/2023
-Placa: TT55TI,A8,Audi,Blue,2009,12353,1,Motor: V12,1421,C.I: 42788879,8/11/2025
-Placa: VC22BR,Omni,Dodge,Aquamarine,1978,84573,0,Motor: V6,1166,C.I: 28201137,1/19/2025
-Placa: US99NK,9000,Saab,Orange,1999,134946,1,Motor: V6,1090,C.I: 34660124,12/2/2023
-Placa: EX91JH,Marquis,Mercury,Yellow,1986,160963,0,Motor: V8,1633,C.I: 46105716,3/31/2025
-Placa: CK84EH,S10,Chevrolet,Teal,1992,121213,1,Motor: V8,1219,C.I: 59782160,5/3/2024
-Placa: PR21RM,Range Rover,Land Rover,Khaki,2012,88798,1,Motor: V12,876,C.I: 39234246,4/20/2024
-Placa: WD64LE,V40,Volvo,Aquamarine,2002,66781,1,Motor: V6,864,C.I: 50717171,8/14/2024
-Placa: XI82UQ,Dakota,Dodge,Orange,2008,56735,0,Motor: V8,1258,C.I: 67703398,6/29/2024
-Placa: ZY49IN,57,Maybach,Aquamarine,2006,152135,0,Motor: V6,1480,C.I: 89406667,6/10/2024
-Placa: AU61YQ,Tempo,Ford,Yellow,1984,75860,0,Motor: V12,836,C.I: 50873166,1/3/2024
-Placa: VG68DY,Tempo,Ford,Blue,1992,37401,0,Motor: V12,1412,C.I: 99530630,4/1/2025
-Placa: DB18CC,Expedition,Ford,Maroon,1999,155704,1,Motor: V8,1305,C.I: 73507216,12/21/2024
-Placa: PV22JL,Legacy,Subaru,Purple,2007,128149,1,Motor: V6,975,C.I: 90626193,11/13/2024
-Placa: HE46LA,Boxster,Porsche,Teal,2002,99115,1,Motor: V12,843,C.I: 93988533,3/31/2024
-Placa: FI62DN,Sephia,Kia,Red,1996,26435,1,Motor: V8,1312,C.I: 89298284,3/8/2025
-Placa: PM67BH,Elise,Lotus,Purple,2007,34000,1,Motor: V12,1590,C.I: 79175982,10/19/2024
-Placa: SB44SU,xA,Scion,Purple,2004,141253,0,Motor: V6,883,C.I: 20079361,12/19/2023
-Placa: VJ11GX,Rapide,Aston Martin,Aquamarine,2012,80335,0,Motor: V8,1358,C.I: 74345813,11/7/2024
-Placa: SK35DL,Exige,Lotus,Blue,2011,2806,0,Motor: V10,1198,C.I: 25747437,5/16/2025
-Placa: DL41EA,Xterra,Nissan,Crimson,2002,111775,0,Motor: V8,1375,C.I: 33563228,6/27/2024
-Placa: ST18VN,Ram Van B150,Dodge,Teal,1992,181332,0,Motor: V10,1770,C.I: 96170677,1/11/2024
-Placa: LD45UB,Fusion,Ford,Maroon,2009,93260,1,Motor: V6,910,C.I: 12864430,11/29/2023
-Placa: KMK,Modelo: Canry,Marca: Toyota,Color:Blanco,0,Kilometraje: 150000,Rentado(1 si; 0 No): 0,Motor: V6,Precio renta:250,C.I0,Fecha de entrega: N/A
-
-
-
+ZU18YN,G,Infiniti,Mauv,163582,1,0,1993,0,0,
+PY80AQ,Magnum,Dodge,Purple,11043,0,0,2006,0,0,
+PE27AH,Falcon,Ford,Indigo,103684,1,0,1966,0,0,
+KF77BY,Mazda5,Mazda,Maroon,130969,0,0,2008,0,0,
+AQ06SG,GT500,Ford,Puce,12297,0,0,2007,0,0,
+PV33HU,SLK55 AMG,Mercedes-Benz,Khaki,118580,1,0,2009,0,0,
+PP97YD,Neon,Plymouth,Pink,1886,0,0,1997,0,0,
+BI93KR,Cobalt,Chevrolet,Maroon,59026,0,0,2010,0,0,
+TK56CI,XL7,Suzuki,Maroon,180440,0,0,2009,0,0,
+SE97QS,Sunfire,Pontiac,Mauv,24335,1,0,2000,0,0,
+ER05II,Bravada,Oldsmobile,Khaki,174991,1,0,1997,0,0,
+UJ00PN,Focus,Ford,Fuscia,123637,0,0,2005,0,0,
+VV67YS,ES,Lexus,Pink,7116,0,0,2004,0,0,
+KO74TD,Accord,Honda,Yellow,159770,0,0,2006,0,0,
+TU42HJ,Sienna,Toyota,Blue,28506,0,0,2010,0,0,
+OJ65WW,Mustang,Ford,Red,136532,1,0,2004,0,0,
+GV88PK,RVR,Mitsubishi,Orange,153494,1,0,1995,0,0,
+DN49JQ,Golf,Volkswagen,Maroon,63377,1,0,2002,0,0,
+NX17PW,Grand Prix,Pontiac,Green,109816,1,0,1966,0,0,
+CE34VQ,944,Porsche,Aquamarine,66578,1,0,1987,0,0,
+FW53IO,X-Type,Jaguar,Khaki,104199,1,0,2008,0,0,
+BR50EB,Cougar,Mercury,Turquoise,154583,0,0,1968,0,0,
+YB82RQ,Outlander,Mitsubishi,Yellow,151770,1,0,2012,0,0,
+PJ83MU,Justy,Subaru,Teal,122137,1,0,1991,0,0,
+HX05KC,Eclipse,Mitsubishi,Green,11448,0,0,2001,0,0,
+FS47KN,Boxster,Porsche,Yellow,139220,1,0,2002,0,0,
+CQ38CZ,Highlander,Toyota,Yellow,17427,1,0,2002,0,0,
+GQ46UL,Legacy,Subaru,Teal,163583,1,0,1998,0,0,
+HF30PO,Exige,Lotus,Khaki,178138,1,0,2010,0,0,
+TC89MJ,Caprice Classic,Chevrolet,Crimson,188817,0,0,1996,0,0,
+QU58YR,Mustang,Ford,Turquoise,160001,0,0,1997,0,0,
+DV15WH,IS,Lexus,Yellow,86952,1,0,2012,0,0,
+NU42PB,IS,Lexus,Maroon,18584,1,0,2006,0,0,
+HC37TP,GS,Lexus,Pink,126298,1,0,1996,0,0,
+LJ87OY,Type 2,Volkswagen,Yellow,83796,1,0,1987,0,0,
+JB74QN,Econoline E350,Ford,Violet,71583,0,0,1996,0,0,
+KR13CX,Tacoma,Toyota,Crimson,73932,1,0,1998,0,0,
+CB87TY,Paseo,Toyota,Khaki,33386,0,0,1996,0,0,
+VW87QT,TT,Audi,Khaki,100356,0,0,2011,0,0,
+MP44PN,G25,Infiniti,Indigo,159136,1,0,2012,0,0,
+AX28QO,LeBaron,Chrysler,Puce,173971,0,0,1994,0,0,
+UT59PE,Tempo,Ford,Crimson,176872,0,0,1989,0,0,
+VD66WH,GTI,Volkswagen,Puce,45891,0,0,2011,0,0,
+IZ71SG,XJ Series,Jaguar,Fuscia,107891,1,0,1992,0,0,
+SJ80YH,911,Porsche,Crimson,67352,0,0,2009,0,0,
+TN33JU,MX-5,Mazda,Maroon,2816,1,0,2000,0,0,
+FP01GE,Sebring,Chrysler,Fuscia,39627,0,0,2000,0,0,
+NJ91PJ,Sebring,Chrysler,Aquamarine,49027,1,0,2002,0,0,
+MH87NV,Talon,Eagle,Turquoise,126137,0,0,1993,0,0,
+XO48II,Forenza,Suzuki,Khaki,152384,1,0,2008,0,0,
+VW48XY,9-5,Saab,Yellow,151012,0,0,2010,0,0,
+ZF91XX,B-Series,Mazda,Green,123401,1,0,1995,0,0,
+RJ64QN,5000CS,Audi,Goldenrod,136201,1,0,1988,0,0,
+GY99YM,Sundance,Plymouth,Yellow,183392,1,0,1992,0,0,
+ZI63LN,Silverado,Chevrolet,Orange,175194,0,0,2010,0,0,
+WN00PF,Ram Van 1500,Dodge,Violet,73150,1,0,1999,0,0,
+AS47GY,9-3,Saab,Violet,22110,1,0,2005,0,0,
+LD45MP,Golf,Volkswagen,Red,145769,1,0,1998,0,0,
+XQ48RV,A3,Audi,Purple,59723,0,0,2008,0,0,
+VH10IK,SJ,Suzuki,Indigo,153055,1,0,1994,0,0,
+OG22KD,Trooper,Isuzu,Indigo,855,1,0,1993,0,0,
+FL43ME,Sierra 2500HD,GMC,Turquoise,183187,1,0,2006,0,0,
+HB09DC,Murano,Nissan,Mauv,78914,0,0,2009,0,0,
+DP48ET,Spyder,Maserati,Puce,120144,1,0,2002,0,0,
+TT50IQ,Acadia,GMC,Goldenrod,29836,1,0,2008,0,0,
+VH99OZ,3 Series,BMW,Aquamarine,41706,0,0,2001,0,0,
+VE90XH,Eclipse,Mitsubishi,Orange,43259,0,0,1989,0,0,
+BL78AN,MINI,MINI,Crimson,115730,1,0,2002,0,0,
+RH84VJ,GTI,Volkswagen,Yellow,93216,0,0,2000,0,0,
+SZ62SU,Accord,Honda,Violet,121575,0,0,1991,0,0,
+ZO56TJ,Cirrus,Chrysler,Mauv,142750,1,0,1999,0,0,
+OQ48MZ,SL-Class,Mercedes-Benz,Crimson,55165,0,0,1998,0,0,
+QN23LR,Vibe,Pontiac,Fuscia,120140,0,0,2005,0,0,
+YW58JQ,3 Series,BMW,Mauv,140170,1,0,1998,0,0,

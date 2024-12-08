@@ -1,6 +1,12 @@
 #include <iostream>
 using namespace std;
 
+void menuGestUsers(){
+  cout<<"1. Agregar un nuevo usuario: "<<endl;
+  cout<<"2. Modificar un usuario existente: "<<endl;
+  cout<<"3. Eliminar un usuario: "<<endl;
+  cout<<"0. Volver al menu principal."<<endl;
+}
 
 void menuClientes(){
     cout << "1. Agregar Cliente" << endl;
