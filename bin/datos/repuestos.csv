@@ -1,75 +1,73 @@
-radiator,Global Auto Components,V3.5,Pilot,2010,59.48,44
-spark plug,Precision Motors,V5.3,CR-V,2001,86.51,30
-brake pad,Speedy Parts,V2.1,ES,2012,127.12,36
-brake pad,Precision Motors,V1.0,Voyager,2003,140.54,22
-fuel pump,Global Auto Components,V1.0,Cabriolet,2002,44.07,74
-spark plug,AutoTech Industries,V4.2,CL-Class,2007,106.49,54
-tire,ACME Parts,V5.3,Town & Country,1997,107.0,51
-air filter,AutoTech Industries,V5.3,V8 Vantage,2007,45.83,35
-radiator,ACME Parts,V4.2,A6,2004,22.22,1
-headlight,ACME Parts,V3.5,F250,2010,101.56,56
-spark plug,Precision Motors,V5.3,Diablo,1998,56.92,42
-air filter,Global Auto Components,V2.1,Camry,2004,112.76,72
-headlight,AutoTech Industries,V1.0,928,1985,38.0,4
-spark plug,Speedy Parts,V5.3,Bonneville,2000,44.13,31
-brake pad,Speedy Parts,V4.2,MKZ,2012,106.6,19
-air filter,Global Auto Components,V2.1,G3,2010,29.36,61
-air filter,Speedy Parts,V4.2,F250,2011,123.09,2
-fuel pump,Global Auto Components,V3.5,2500,1997,130.97,42
-brake pad,ACME Parts,V5.3,Pathfinder Armada,2004,30.37,26
-air filter,ACME Parts,V4.2,Ridgeline,2010,66.77,63
-spark plug,AutoTech Industries,V1.0,Gemini,1989,132.24,62
-fuel pump,AutoTech Industries,V4.2,Sebring,2006,23.85,21
-air filter,Precision Motors,V4.2,Avalanche,2010,11.72,59
-headlight,Speedy Parts,V4.2,Ranger,2004,148.29,45
-brake pad,Precision Motors,V3.5,M3,1999,17.19,40
-spark plug,Global Auto Components,V4.2,Diablo,1993,141.56,24
-radiator,Precision Motors,V2.1,A6,2005,46.62,41
-air filter,Precision Motors,V3.5,Impreza,2001,13.11,49
-headlight,ACME Parts,V1.0,Continental,1987,93.31,2
-headlight,AutoTech Industries,V1.0,Savana 2500,2007,33.91,44
-air filter,Speedy Parts,V2.1,Miata MX-5,2007,70.26,41
-radiator,Speedy Parts,V1.0,911,2000,6.67,34
-spark plug,Precision Motors,V2.1,Corvette,1968,40.12,64
-fuel pump,Speedy Parts,V5.3,Silverado 1500,2003,100.59,17
-headlight,Global Auto Components,V5.3,Sonoma Club Coupe,1998,73.68,57
-tire,ACME Parts,V2.1,Esprit Turbo,1984,98.41,11
-tire,Precision Motors,V5.3,F-Series Super Duty,2011,13.46,18
-tire,AutoTech Industries,V3.5,LS,1998,12.56,55
-radiator,ACME Parts,V4.2,Stealth,1996,44.2,20
-headlight,Speedy Parts,V5.3,MX-5,1994,38.38,73
-engine,ACME Parts,V1.0,Intrepid,1996,95.68,62
-air filter,Precision Motors,V3.5,Diamante,1998,145.9,15
-spark plug,ACME Parts,V4.2,MR2,1987,38.69,15
-fuel pump,Speedy Parts,V3.5,Continental,2009,98.02,21
-engine,Precision Motors,V3.5,Cherokee,1993,112.36,23
-fuel pump,ACME Parts,V2.1,Mirage,1994,68.01,13
-brake pad,Speedy Parts,V1.0,Sentra,2005,105.25,26
-brake pad,Speedy Parts,V1.0,62,2005,117.93,42
-air filter,Precision Motors,V1.0,Mark VIII,1998,125.83,40
-engine,ACME Parts,V5.3,F-Series,1990,80.64,20
-headlight,AutoTech Industries,V5.3,Aveo,2007,63.78,29
-tire,Global Auto Components,V5.3,Mighty Max,1986,46.9,54
-radiator,Precision Motors,V4.2,i-MiEV,2012,74.88,35
-fuel pump,ACME Parts,V2.1,MKX,2010,88.95,50
-brake pad,ACME Parts,V2.1,Safari,1988,64.19,11
-brake pad,Precision Motors,V3.5,600SEC,1993,64.49,40
-brake pad,Precision Motors,V5.3,Trooper,1993,33.36,58
-engine,Speedy Parts,V1.0,Caravan,2011,107.02,59
-air filter,Global Auto Components,V2.1,Shadow,1992,126.87,18
-spark plug,Precision Motors,V5.3,Escalade,2006,100.68,7
-spark plug,ACME Parts,V5.3,Grand Caravan,2010,14.08,36
-headlight,ACME Parts,V2.1,Neon,1999,116.87,29
-engine,ACME Parts,V2.1,3500 Club Coupe,1994,11.68,71
-spark plug,ACME Parts,V1.0,Insight,2004,138.35,3
-brake pad,ACME Parts,V2.1,Acadia,2009,52.26,75
-tire,Precision Motors,V3.5,SC,2002,147.67,31
-engine,AutoTech Industries,V2.1,M3,2002,115.47,3
-radiator,Global Auto Components,V2.1,Elise,2010,64.77,51
-engine,AutoTech Industries,V3.5,Bronco,1984,144.8,61
-headlight,Speedy Parts,V2.1,Escort,2004,101.63,52
-air filter,Global Auto Components,V5.3,Bronco,1992,144.04,71
-air filter,ACME Parts,V2.1,626,1988,132.58,68
-brake pad,AutoTech Industries,V2.1,Mazda3,2007,108.3,18
-engine,Speedy Parts,V2.1,Regal,1999,54.17,48
-fuel pump,Global Auto Components,V5.3,Concorde,1997,70.4,16
+p,p,p,p,2,2,2
+engine,ACME Parts,V4.2,Prowler,1997,93.9,57
+radiator,Global Auto Components,V5.3,Quest,2000,147.3,54
+radiator,Global Auto Components,V4.2,Caliber,2008,75.74,41
+brake,Global Auto Components,V2.1,Quest,2008,19.92,19
+transmission,Precision Motors,V2.1,Century,1998,125.48,71
+tire,Precision Motors,V5.3,Malibu,2009,12.78,55
+transmission,Global Auto Components,V2.1,Taurus,2002,113.47,66
+tire,ACME Parts,V3.5,Avalanche 1500,2005,124.72,31
+brake,Precision Motors,V2.1,ES,1991,73.58,65
+engine,Precision Motors,V4.2,Amigo,1992,97.99,31
+engine,Speedy Parts,V4.2,G,2002,38.16,40
+brake,Precision Motors,V4.2,Swift,1995,104.66,20
+engine,Global Auto Components,V4.2,Blazer,1999,143.25,38
+engine,Precision Motors,V3.5,6 Series,2007,27.21,14
+radiator,ACME Parts,V4.2,Sebring,1997,54.05,35
+radiator,Speedy Parts,V5.3,5 Series,2007,50.74,53
+engine,Precision Motors,V2.1,Legacy,2008,115.42,1
+transmission,Global Auto Components,V2.1,Entourage,2009,12.91,3
+radiator,Global Auto Components,V5.3,Grand Am,2001,73.2,36
+tire,Global Auto Components,V2.1,S2000,2003,94.69,41
+brake,Global Auto Components,V4.2,Equinox,2012,89.97,30
+brake,Precision Motors,V5.3,Tiburon,2004,111.3,15
+tire,Precision Motors,V5.3,MR2,1987,48.85,44
+radiator,Precision Motors,V1.0,GTO,1974,42.43,22
+tire,Precision Motors,V3.5,TrailBlazer,2009,109.6,16
+transmission,AutoTech Industries,V2.1,MKZ,2009,132.72,55
+engine,ACME Parts,V3.5,Sundance,1994,128.98,71
+radiator,AutoTech Industries,V2.1,928,1989,123.05,8
+radiator,ACME Parts,V3.5,Cobalt,2009,86.53,9
+transmission,AutoTech Industries,V1.0,Previa,1991,109.25,8
+engine,Global Auto Components,V2.1,Ram 2500,1999,53.06,4
+tire,AutoTech Industries,V2.1,C-Class,2005,127.37,19
+tire,Global Auto Components,V1.0,Continental,2010,110.34,46
+transmission,AutoTech Industries,V3.5,X6,2013,10.1,45
+radiator,Global Auto Components,V2.1,New Yorker,1996,96.23,23
+engine,Global Auto Components,V1.0,Grand Cherokee,2008,122.63,10
+transmission,Precision Motors,V3.5,xA,2004,51.99,47
+engine,AutoTech Industries,V2.1,Accent,2011,54.49,43
+brake,AutoTech Industries,V5.3,Galant,2005,73.86,44
+tire,Global Auto Components,V2.1,LHS,1995,142.19,37
+engine,ACME Parts,V1.0,Echo,2002,39.56,1
+engine,Precision Motors,V5.3,Elantra,1992,59.88,66
+tire,AutoTech Industries,V4.2,RX,2011,53.39,37
+brake,Precision Motors,V1.0,Silverado 1500,2010,105.88,35
+tire,Precision Motors,V4.2,Protege,1992,112.25,24
+engine,Speedy Parts,V2.1,V8,1994,43.25,13
+tire,ACME Parts,V3.5,Grand Voyager,1993,47.78,9
+transmission,ACME Parts,V2.1,Oasis,1998,11.96,6
+radiator,Precision Motors,V2.1,Crown Victoria,2010,71.6,32
+engine,ACME Parts,V1.0,Mariner,2008,68.68,19
+radiator,AutoTech Industries,V4.2,G,2005,135.19,66
+tire,AutoTech Industries,V5.3,3 Series,1993,140.01,74
+tire,Global Auto Components,V1.0,Spectra,2007,136.23,64
+brake,ACME Parts,V2.1,X5,2003,26.12,67
+tire,Global Auto Components,V1.0,Elise,2009,43.24,72
+transmission,Precision Motors,V5.3,Prius c,2012,17.37,5
+engine,ACME Parts,V1.0,Voyager,1998,122.72,2
+transmission,ACME Parts,V5.3,Matrix,2009,20.78,44
+brake,Precision Motors,V2.1,MR2,2002,130.29,57
+engine,ACME Parts,V4.2,G,2002,27.64,11
+transmission,Global Auto Components,V3.5,Cayman,2007,14.82,54
+transmission,AutoTech Industries,V2.1,Scoupe,1992,67.54,60
+brake,AutoTech Industries,V2.1,Diablo,1992,125.34,37
+transmission,Global Auto Components,V5.3,Accent,2003,139.93,37
+tire,ACME Parts,V3.5,Golf,2004,81.5,73
+transmission,Global Auto Components,V5.3,Terrain,2010,58.36,42
+transmission,Speedy Parts,V1.0,EXP,1985,10.95,70
+engine,AutoTech Industries,V5.3,X6 M,2011,134.75,18
+radiator,Global Auto Components,V5.3,SJ,1994,20.62,53
+tire,Precision Motors,V3.5,Vibe,2003,57.81,60
+radiator,Precision Motors,V4.2,Rally Wagon 2500,1992,94.05,45
+brake,Global Auto Components,V1.0,4Runner,2006,105.04,21

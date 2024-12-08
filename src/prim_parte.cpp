@@ -13,6 +13,7 @@
 
 using namespace std;
 
+
 int main() {
     int cantidadUsuarios = 0, cantidadVehiculos = 0, cantidadRepuestos = 0, cantidadClientes = 0;
     int op1, op2;
@@ -241,69 +242,63 @@ break;
             switch(op1){
                 case 1:
                 do{
-                    cout<<endl;
-                    string placa;
-                    menuVehiculos();
-                    cin>>op2;
-                    switch(op2){
-                        case 1:
-                        
-                        break;
+                string placa;
+                menuVehiculos();
+                cin>>op2;
+                cout<<endl;
+                switch(op2){
+                case 1:{
+                }
+                break;
 
-                        case 2:
-                        cout<<endl;
-                        cout<<"Ingrese la placa del vehiculo que desea consultar: ";
-                        cin>>placa;
-                        Vehiculo::consultarVehiculo(vehiculo, cantidadVehiculos, placa);
-                        break;
+                case 2:
+                cout<<"Ingrese la placa del vehiculo que desea consultar: ";
+                cin>>placa;
+                Vehiculo::consultarVehiculo(vehiculo, cantidadVehiculos, placa);
+                break;
 
-                        case 3:
-                        cout<<endl;
-                        cout<<"Ingrese la placa del vehiculo que desea borrar: ";
-                        cin>>placa;
-                        Vehiculo::borrarVehiculo(vehiculo, cantidadVehiculos, placa);
+                case 3:
+                cout<<"Ingrese la placa del vehiculo que desea borrar: ";
+                cin>>placa;
+                Vehiculo::borrarVehiculo(vehiculo, cantidadVehiculos, placa);
+                break;
 
-                        break;
+                case 4:
+                cout<<"Ingrese la placa del vehiculo que desea modificar: ";
+                cin>>placa;
+                Vehiculo::modificarVehiculo(vehiculo, cantidadVehiculos, placa);
+                break;
 
-                        case 4:
-                        cout<<endl;
-                        cout<<"Ingrese la placa del vehiculo que desea modificar: ";
-                        cin>>placa;
-                        Vehiculo::modificarVehiculo(vehiculo, cantidadVehiculos, placa);
+                case 5:
+                Vehiculo::leerListaVehiculos(vehiculo, cantidadVehiculos);
+                break;
 
-                        break;
+                case 0:
+                cout<<"Volviendo al menu principal";
+                break;
 
-                        case 5:
-                        cout<<endl;
-                        Vehiculo::leerListaVehiculos(vehiculo,cantidadVehiculos);
-                        break;
+                default:
+                cout<<"Opcion invalida"<<endl;
 
-                        case 0:
-                        cout<<"Volviendo al menu principal";
-                        break;
 
-                        default:
-                        cout<<"Opcion Invalida";
-                        break;
-                    }
-                    //vehiculos
+                }
                 }while(op2!=0);
                 break;
 
-                case 2:
+                case 2: 
                 do{
-                cout<<endl;
                 int anioCarro;
-            string nombre;
-            string modeloCarro;
-            menuRepuestos();
-            cin>>op2;
-            switch(op2){
-                case 1:
+                string nombre;
+               string modeloCarro;
+                menuRepuestos();
+                cin>>op2;
+                cout<<endl;
+                switch(op2){
+                    case 1:
+                //agregar
                 break;
 
                 case 2:
-                cout<<endl;
                 cout<<"Ingrese el nombre del repuesto a consultar: ";
                 cin>>nombre;
                 cout<<"Ingrese el modelo del carro del repuesto: ";
@@ -314,9 +309,8 @@ break;
                 break;
 
                 case 3:
-                cout<<endl;
                 cout<<"Ingrese el nombre del repuesto a borrar: ";
-                cin>>nombre;
+                cin>>nombre;             
                 cout<<"Ingrese el modelo del carro del repuesto: ";
                 cin>>modeloCarro;
                 cout<<"Ingrese el year del carro del repuesto: ";
@@ -325,7 +319,6 @@ break;
                 break;
 
                 case 4:
-                cout<<endl;
                 cout<<"Ingrese el nombre del repuesto a modificar: ";
                 cin>>nombre;
                 cout<<"Ingrese el modelo del carro del repuesto: ";
@@ -336,33 +329,31 @@ break;
                 break;
 
                 case 5:
-                cout<<endl;
                 Repuesto::leerListaRepuestos(repuestos, cantidadRepuestos);
                 break;
-                
-                case 0:
-                cout<<endl;
-                cout<<"Volviendo al menu";
-                break;
+
+case 0:
+cout<<"Volviendo al menu";
+break;
 
                 default:
-                cout<<endl;
-                cout<<"Opcion invalida"<<endl;  
-                break;              
-            }
+                cout<<"Opcion invalida"<<endl;
+
+                }
                 }while(op2!=0);
                 break;
 
-                case 4:
+                case 3:
                 int cedula;
                 cout<<endl;
                 do{
+                menuClientes();
+                cin>>op2;
                 switch(op2){
-                case 1:{
+case 1:{
                 break;
                 }
                 case 2:
-                cout<<endl;
                 cout<<"Ingrese la cedula del cliente que desea consultar: ";
                 cin>>cedula;
                 cout<<endl;
@@ -371,52 +362,41 @@ break;
                 break;
 
                 case 3:
-                cout<<endl;
                 cout<<"Ingrese la cedula del cliente que quiere borrar: ";
                 cin>>cedula;
                 Cliente::borrarCliente(clientes, cantidadClientes, cedula);
                 break;
 
                 case 4:
-                cout<<endl;
                 cout<<"Ingrese la cedula del cliente a buscar: ";
                 cin>>cedula;
                 Cliente::modificarCliente(clientes, cantidadClientes, cedula);
                 break;
 
                 case 5:
-                cout<<endl;
                 Cliente::leerListaClientes(clientes, cantidadClientes);
                 cout<<endl;
                 break;
 
                 case 0:
-                cout<<endl;
                 cout<<"Volviendo al menu principal"<<endl;
                 cout<<endl;
                 break; 
 
                 default:
-                cout<<endl;
                 cout<<"Opcion invalida"<<endl;
-
-                    }
-                    //clientes
+                }
                 }while(op2!=0);
                 break;
 
                 case 0:
-                cout<<endl;
-                cout<<"Saliendo";
+                cout<<"\nSaliendo.\n";
                 break;
 
                 default:
-                cout<<endl;
-                cout<<"Opcion invalida."<<endl;
-                break;
+                cout<<"\nOpcion invalida.\n";
             }
         }while(op1!=0);
-
     }else if(rol == "empleado"){
         do{
             string placa;

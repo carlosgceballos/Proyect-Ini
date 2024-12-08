@@ -109,7 +109,7 @@ void Repuesto::consultarRepuesto(Repuesto* repuestos, int cantidad, const string
     // Consultar repuestos
     for (int i = 0; i < cantidad; i++) {
         if (repuestos[i].nombre == nombre) {
-            cout<<"Nombre: " << repuestos[i].nombre << ", Marca: " << repuestos[i].marca << "\n"<<", Modelo: "<<repuestos[i].modelo <<", Modelo de carro: "<<repuestos[i].modelo_carro<<", Year del carro: "<<repuestos[i].anio_carro<<endl;
+            cout<<"Nombre: " << repuestos[i].nombre << ", Marca: " << repuestos[i].marca <<", Modelo: "<<repuestos[i].modelo <<", Modelo de carro: "<<repuestos[i].modelo_carro<<", Year del carro: "<<repuestos[i].anio_carro<<endl;
             encontrado = true;
             break;
         }
@@ -126,29 +126,15 @@ void Repuesto::borrarRepuesto(Repuesto*& repuestos, int& cantidad, const string&
     int j = 0;
 
     for (int i = 0; i < cantidad; i++) {
-        if (repuestos[i].nombre == nombre && repuestos[i].modelo_carro == modeloCarro && repuestos[i].anio_carro== anioCarro) {
+        if (repuestos[i].nombre == nombre && repuestos[i].modelo_carro == modeloCarro && repuestos[i].anio_carro == anioCarro) {
             encontrado = true;
         } else {
             temp[j++] = repuestos[i];
         }
     }
 
-    // Crear archivo temporal para borrar el repuesto
-    ofstream tempArchivo("bin/datos/repuestos_temp.csv");
-    if (!tempArchivo.is_open()) {
-        cout << "Error al crear el archivo temporal.\n";
-        delete[] temp;
-        return;
-    }
-
-    // Escribir los repuestos restantes en el archivo temporal
     if (encontrado) {
-        for (int i = 0; i < cantidad - 1; i++) {
-            tempArchivo << repuestos[i].nombre << "," << repuestos[i].marca << "," << repuestos[i].modelo << ","
-                << repuestos[i].modelo_carro << "," << repuestos[i].anio_carro << ","
-                << repuestos[i].precio << "," << repuestos[i].existencias << "\n";
-        }
-
+        // Confirmación del usuario para aplicar los cambios
         int confirmar;
         cout << "¿Desea confirmar la eliminación del repuesto? (1 para confirmar, 0 para cancelar): ";
         cin >> confirmar;
@@ -157,18 +143,33 @@ void Repuesto::borrarRepuesto(Repuesto*& repuestos, int& cantidad, const string&
             delete[] repuestos;
             repuestos = temp;
             cantidad--;
+
+            // Crear archivo temporal y guardar los cambios
+            ofstream tempArchivo("bin/datos/repuestos_temp.csv");
+            if (!tempArchivo.is_open()) {
+                cout << "Error al crear el archivo temporal.\n";
+                delete[] temp;
+                return;
+            }
+
+            for (int i = 0; i < cantidad; i++) {
+                tempArchivo << repuestos[i].nombre << "," << repuestos[i].marca << "," << repuestos[i].modelo << ","
+                            << repuestos[i].modelo_carro << "," << repuestos[i].anio_carro << ","
+                            << repuestos[i].precio << "," << repuestos[i].existencias << "\n";
+            }
+            tempArchivo.close();
+
             remove("bin/datos/repuestos.csv");
             rename("bin/datos/repuestos_temp.csv", "bin/datos/repuestos.csv");
+
             cout << "Repuesto borrado exitosamente.\n";
         } else {
             delete[] temp;
-            remove("bin/datos/repuestos_temp.csv");
             cout << "Operación cancelada. No se eliminó el repuesto.\n";
         }
     } else {
         delete[] temp;
-        remove("bin/datos/repuestos_temp.csv");
-        cout << "No se encontró un repuesto con el nombre proporcionado.\n";
+        cout << "No se encontró un repuesto con las especificaciones proporcionadas.\n";
     }
 }
 
