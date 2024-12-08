@@ -61,5 +61,6 @@ void menuEmpleado(){
   cout<<" 1. Consultar vehiculos."<<endl;
   cout<<" 2. Consultar repuestos."<<endl;
   cout<<" 3. Consultar clientes."<<endl;
+  cout<<" 4. Modificar existencias."<<endl;
   cout<<" 0. Salir"<<endl;
 }

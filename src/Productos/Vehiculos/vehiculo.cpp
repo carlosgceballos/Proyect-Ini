@@ -12,11 +12,11 @@ Vehiculo* Vehiculo::cargarVehiculos(int& cantidad) {
     ifstream archivo("bin/datos/vehiculos.csv");
     if (!archivo.is_open()) {
         cout << "Error al abrir el archivo de vehículos.\n";
-        return NULL;
+        return nullptr;
     }
 
     cantidad = 0;
-    Vehiculo* vehiculos = new Vehiculo[100]; 
+    Vehiculo* vehiculos = new Vehiculo[100]; // Tamaño inicial
     string linea;
 
     while (getline(archivo, linea)) {
@@ -115,6 +115,7 @@ void Vehiculo::borrarVehiculo(Vehiculo*& vehiculos, int& cantidad, const string&
         cout << "Error al crear el archivo temporal.\n";
         return;
     }
+
     if (encontrado) {
         delete[] vehiculos;
         vehiculos = temp;
@@ -208,6 +209,7 @@ void Vehiculo::modificarVehiculo(Vehiculo* vehiculos, int cantidad, const string
         int confirmar;
         cout << "¿Desea confirmar la modificación del vehículo? (1 para confirmar, 0 para cancelar): ";
         cin >> confirmar;
+
         if (confirmar == 1) {
             remove("bin/datos/vehiculos.csv");
             rename("bin/datos/vehiculos_temp.csv", "bin/datos/vehiculos.csv");

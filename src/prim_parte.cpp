@@ -11,9 +11,12 @@
 #include "../src/Productos/Vehiculos/Vehiculo.cpp"
 #include "../src/Menus/menu.cpp"
 
+using namespace std;
+
 int main() {
     int cantidadUsuarios = 0, cantidadVehiculos = 0, cantidadRepuestos = 0, cantidadClientes = 0;
     int op1, op2;
+    Vehiculo nuevoVehiculo;
     
 // Cargar datos desde archivos
 Usuario** usuarios = Usuario::cargarUsuarios(cantidadUsuarios);
@@ -65,13 +68,13 @@ Usuario* usuarioAutenticado = nullptr;
                 break;
 
                 case 0:
+                cout<<"Volviendo al menu principal";
                 break;
 
                 default:
                 cout<<"Opcion invalida"<<endl;
             }
             }while(op2 != 0);
-            //gestion users
             break;
 
             case 2:
@@ -81,8 +84,8 @@ Usuario* usuarioAutenticado = nullptr;
             menuVehiculos();
             cin>>op2;
             switch(op2){
-                case 1:
-                //Agregar
+                case 1:{
+                }
                 break;
 
                 case 2:
@@ -164,6 +167,10 @@ Usuario* usuarioAutenticado = nullptr;
                 Repuesto::leerListaRepuestos(repuestos, cantidadRepuestos);
                 break;
 
+case 0:
+cout<<"Volviendo al menu";
+break;
+
                 default:
                 cout<<"Opcion invalida"<<endl;
             }
@@ -228,15 +235,236 @@ Usuario* usuarioAutenticado = nullptr;
         }while(op1!=0);
 
     }else if(rol=="manager"){
-        menuManager();
+        do{
+            menuManager();
+            cin>>op1;
+            switch(op1){
+                case 1:
+                do{
+                    cout<<endl;
+                    string placa;
+                    menuVehiculos();
+                    cin>>op2;
+                    switch(op2){
+                        case 1:
+                        
+                        break;
+
+                        case 2:
+                        cout<<endl;
+                        cout<<"Ingrese la placa del vehiculo que desea consultar: ";
+                        cin>>placa;
+                        Vehiculo::consultarVehiculo(vehiculo, cantidadVehiculos, placa);
+                        break;
+
+                        case 3:
+                        cout<<endl;
+                        cout<<"Ingrese la placa del vehiculo que desea borrar: ";
+                        cin>>placa;
+                        Vehiculo::borrarVehiculo(vehiculo, cantidadVehiculos, placa);
+
+                        break;
+
+                        case 4:
+                        cout<<endl;
+                        cout<<"Ingrese la placa del vehiculo que desea modificar: ";
+                        cin>>placa;
+                        Vehiculo::modificarVehiculo(vehiculo, cantidadVehiculos, placa);
+
+                        break;
+
+                        case 5:
+                        cout<<endl;
+                        Vehiculo::leerListaVehiculos(vehiculo,cantidadVehiculos);
+                        break;
+
+                        case 0:
+                        cout<<"Volviendo al menu principal";
+                        break;
+
+                        default:
+                        cout<<"Opcion Invalida";
+                        break;
+                    }
+                    //vehiculos
+                }while(op2!=0);
+                break;
+
+                case 2:
+                do{
+                cout<<endl;
+                int anioCarro;
+            string nombre;
+            string modeloCarro;
+            menuRepuestos();
+            cin>>op2;
+            switch(op2){
+                case 1:
+                break;
+
+                case 2:
+                cout<<endl;
+                cout<<"Ingrese el nombre del repuesto a consultar: ";
+                cin>>nombre;
+                cout<<"Ingrese el modelo del carro del repuesto: ";
+                cin>>modeloCarro;
+                cout<<"Ingrese el year del carro del repuesto: ";
+                cin>>anioCarro;
+                Repuesto::consultarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                break;
+
+                case 3:
+                cout<<endl;
+                cout<<"Ingrese el nombre del repuesto a borrar: ";
+                cin>>nombre;
+                cout<<"Ingrese el modelo del carro del repuesto: ";
+                cin>>modeloCarro;
+                cout<<"Ingrese el year del carro del repuesto: ";
+                cin>>anioCarro;
+                Repuesto::borrarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                break;
+
+                case 4:
+                cout<<endl;
+                cout<<"Ingrese el nombre del repuesto a modificar: ";
+                cin>>nombre;
+                cout<<"Ingrese el modelo del carro del repuesto: ";
+                cin>>modeloCarro;
+                cout<<"Ingrese el year del carro del repuesto: ";
+                cin>>anioCarro;
+                Repuesto::modificarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                break;
+
+                case 5:
+                cout<<endl;
+                Repuesto::leerListaRepuestos(repuestos, cantidadRepuestos);
+                break;
+                
+                case 0:
+                cout<<endl;
+                cout<<"Volviendo al menu";
+                break;
+
+                default:
+                cout<<endl;
+                cout<<"Opcion invalida"<<endl;  
+                break;              
+            }
+                }while(op2!=0);
+                break;
+
+                case 4:
+                int cedula;
+                cout<<endl;
+                do{
+                switch(op2){
+                case 1:{
+                break;
+                }
+                case 2:
+                cout<<endl;
+                cout<<"Ingrese la cedula del cliente que desea consultar: ";
+                cin>>cedula;
+                cout<<endl;
+                Cliente::consultarCliente(clientes, cantidadClientes, cedula);
+                cout<<endl;
+                break;
+
+                case 3:
+                cout<<endl;
+                cout<<"Ingrese la cedula del cliente que quiere borrar: ";
+                cin>>cedula;
+                Cliente::borrarCliente(clientes, cantidadClientes, cedula);
+                break;
+
+                case 4:
+                cout<<endl;
+                cout<<"Ingrese la cedula del cliente a buscar: ";
+                cin>>cedula;
+                Cliente::modificarCliente(clientes, cantidadClientes, cedula);
+                break;
+
+                case 5:
+                cout<<endl;
+                Cliente::leerListaClientes(clientes, cantidadClientes);
+                cout<<endl;
+                break;
+
+                case 0:
+                cout<<endl;
+                cout<<"Volviendo al menu principal"<<endl;
+                cout<<endl;
+                break; 
+
+                default:
+                cout<<endl;
+                cout<<"Opcion invalida"<<endl;
+
+                    }
+                    //clientes
+                }while(op2!=0);
+                break;
+
+                case 0:
+                cout<<endl;
+                cout<<"Saliendo";
+                break;
+
+                default:
+                cout<<endl;
+                cout<<"Opcion invalida."<<endl;
+                break;
+            }
+        }while(op1!=0);
+
+    }else if(rol == "empleado"){
+        do{
+            string placa;
+            string nombre;
+            string modeloCarro;
+            int anioCarro;
+            int cedula;
+            menuEmpleado();
+            cin>>op1;
+            switch(op1){
+                case 1:
+                cout<<"Ingrese la placa del vehiculo que desea consultar: ";
+                cin>>placa;
+                Vehiculo::consultarVehiculo(vehiculo, cantidadVehiculos, placa);
+                break;
+
+                case 2:
+                cout<<"Ingrese el nombre del repuesto a consultar: ";
+                cin>>nombre;
+                cout<<"Ingrese el modelo del carro del repuesto: ";
+                cin>>modeloCarro;
+                cout<<"Ingrese el year del carro del repuesto: ";
+                cin>>anioCarro;
+                Repuesto::consultarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                break;
+
+                case 3:
+                cout<<"Ingrese la cedula del cliente que desea consultar: ";
+                cin>>cedula;
+                cout<<endl;
+                Cliente::consultarCliente(clientes, cantidadClientes, cedula);
+                cout<<endl;
+                break;
 
 
-    }else if(rol=="empleado"){
-        menuEmpleado();
+                case 4:
+                break;
 
-    }else{
-        cout<<"Error.";
-    }
+                case 0:
+                cout<<"Saliendo.";
+
+                default:
+                cout<<"Opcion invalida";
+                break;
+            }
+        }while(op1!=0);
+    }else;
+
 
     return 0;
 }

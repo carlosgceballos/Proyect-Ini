@@ -106,25 +106,14 @@ void Repuesto::agregarRepuesto(Repuesto*& repuestos, int& cantidad, const Repues
 void Repuesto::consultarRepuesto(Repuesto* repuestos, int cantidad, const string& nombre, const string& modeloCarro, int anioCarro) {
     bool encontrado = false;
 
-    // Crear archivo temporal para almacenar repuestos consultados
-    ofstream tempArchivo("bin/datos/repuestos_temp.csv");
-    if (!tempArchivo.is_open()) {
-        cout << "Error al crear el archivo temporal.\n";
-        return;
-    }
     // Consultar repuestos
     for (int i = 0; i < cantidad; i++) {
         if (repuestos[i].nombre == nombre) {
-            tempArchivo << "Repuesto encontrado:\n";
-            cout<<"Nombre: " << repuestos[i].nombre << ", Marca: " << repuestos[i].marca << "\n"<<", Modelo: "<<repuestos[i].modelo
-        <<", Modelo de carro: "<<repuestos[i].modelo_carro<<", Year del carro: "<<repuestos[i].anio_carro<<endl;
+            cout<<"Nombre: " << repuestos[i].nombre << ", Marca: " << repuestos[i].marca << "\n"<<", Modelo: "<<repuestos[i].modelo <<", Modelo de carro: "<<repuestos[i].modelo_carro<<", Year del carro: "<<repuestos[i].anio_carro<<endl;
             encontrado = true;
             break;
         }
     }
-
-    tempArchivo.close();
-
     if (!encontrado) {
         cout << "No se encontró un repuesto con el nombre proporcionado.\n";
     }

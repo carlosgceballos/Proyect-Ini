@@ -98,14 +98,15 @@ void Cliente::consultarCliente(Cliente* clientes, int cantidad, int cedula) {
     for (int i = 0; i < cantidad; i++) {
         if (clientes[i].cedula == cedula) {
             cout << "Cliente encontrado:\n"
-                 << "Nombre: " << clientes[i].nombre << "\nApellido: " << clientes[i].apellido << "\n";
+                 << "Nombre: " << clientes[i].nombre << "\nApellido: " << clientes[i].apellido << "\nCedula: "<<clientes[i].cedula<<"\nEmail: "<<clientes[i].email<<
+                 "\nDireccion: "<<clientes[i].direccion<<"\nActivo (1 si, 0 no): "<<clientes[i].activo<<"\n";
             encontrado = true;
             break;
         }
     }
 
     if (!encontrado) {
-        cout << "No se encontró un cliente con la cédula proporcionada.\n";
+        cout << "No se encontró un cliente con la cedula proporcionada.\n";
     }
 }
 
