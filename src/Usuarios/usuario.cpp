@@ -127,7 +127,7 @@ void modificarUsuario(Usuario**& usuarios, int& cantidad, const string& usuarioE
             usuarios[i] = new Usuario(nuevoUsuario, nuevaPassword, nuevoRol);
         }
 
-        // Escribir al archivo temporal (los usuarios, ya sean modificados o no)
+        // Escribir al archivo temporal
         archivoTemp << usuarios[i]->getUsuario() << ","
                     << usuarios[i]->getPasswd() << ","
                     << usuarios[i]->getRol() << "\n";
@@ -207,10 +207,9 @@ void eliminarUsuario(Usuario**& usuarios, int& cantidad, const string& usuarioEl
         return;
     }
 
-    // Escribir todos los usuarios excepto el que se desea eliminar
     for (int i = 0; i < cantidad; i++) {
         if (usuarios[i]->getUsuario() == usuarioEliminar) {
-            encontrado = true;  // No escribimos al usuario que queremos eliminar
+            encontrado = true;  
         } else {
             archivoTemp << usuarios[i]->getUsuario() << ","
                         << usuarios[i]->getPasswd() << ","
@@ -231,7 +230,7 @@ void eliminarUsuario(Usuario**& usuarios, int& cantidad, const string& usuarioEl
             remove("bin/datos/usuarios.csv");
             rename("bin/datos/usuarios_temp.csv", "bin/datos/usuarios.csv");
             cout << "Usuario eliminado exitosamente.\n";
-            cantidad--;  // Decrementar la cantidad de usuarios
+            cantidad--; 
         } else {
             remove("bin/datos/usuarios_temp.csv");
             cout << "Operacion cancelada. No se eliminó el usuario.\n";

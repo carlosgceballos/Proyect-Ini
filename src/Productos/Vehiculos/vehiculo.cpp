@@ -16,7 +16,7 @@ Vehiculo* Vehiculo::cargarVehiculos(int& cantidad) {
     }
 
     cantidad = 0;
-    Vehiculo* vehiculos = new Vehiculo[100]; // Tamaño inicial
+    Vehiculo* vehiculos = new Vehiculo[100]; 
     string linea;
 
     while (getline(archivo, linea)) {

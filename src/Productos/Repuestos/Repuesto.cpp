@@ -73,7 +73,7 @@ void Repuesto::agregarRepuesto(Repuesto*& repuestos, int& cantidad, const Repues
         return;
     }
 
-    // Escribir el nuevo repuesto y los anteriores en el archivo temporal
+    // Escribir el nuevo repuesto 
     for (int i = 0; i < cantidad; i++) {
         tempArchivo << repuestos[i].nombre << "," << repuestos[i].marca << "," << repuestos[i].modelo << ","
                 << repuestos[i].modelo_carro << "," << repuestos[i].anio_carro << ","
