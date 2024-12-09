@@ -401,32 +401,37 @@ break;
                     nuevoVehiculo.setRentado(act);
                     nuevoVehiculo.setYear(year);
                     Vehiculo::agregarVehiculo(vehiculo,cantidadVehiculos,nuevoVehiculo);
+                    cout<<endl;
                 break;
 
                 case 2:
                 cout<<"Ingrese la placa del vehiculo que desea consultar: ";
                 cin>>placa;
                 Vehiculo::consultarVehiculo(vehiculo, cantidadVehiculos, placa);
+                cout<<endl;
                 break;
 
                 case 3:
                 cout<<"Ingrese la placa del vehiculo que desea borrar: ";
                 cin>>placa;
                 Vehiculo::borrarVehiculo(vehiculo, cantidadVehiculos, placa);
+                cout<<endl;
                 break;
 
                 case 4:
                 cout<<"Ingrese la placa del vehiculo que desea modificar: ";
                 cin>>placa;
                 Vehiculo::modificarVehiculo(vehiculo, cantidadVehiculos, placa);
+                cout<<endl;
                 break;
 
                 case 5:
                 Vehiculo::leerListaVehiculos(vehiculo, cantidadVehiculos);
+                cout<<endl;
                 break;
 
                 case 0:
-                cout<<"Volviendo al menu principal";
+                cout<<"Volviendo al menu principal"<<endl;
                 break;
 
                 default:
@@ -446,35 +451,35 @@ break;
                 cin>>op2;
                 cout<<endl;
                 switch(op2){
-                    case 1:
-                                    cout << "Ingrese el nombre del repuesto: ";
-    cin.ignore();
-    getline(cin, nombre);
-    cout << "Ingrese la marca del repuesto: ";
-    getline(cin, marca);
-    cout << "Ingrese el modelo del repuesto: ";
-    getline(cin, modelo);
-    cout << "Ingrese el modelo del carro para el que es el repuesto: ";
-    getline(cin, modeloCarro);
-    cout << "Ingrese el año del carro: ";
-    cin >> anioCarro;
-    cout << "Ingrese el precio del repuesto: ";
-    cin >> precio;
-    cout << "Ingrese las existencias: ";
-    cin >> existencias;
+                case 1:
+                cout << "Ingrese el nombre del repuesto: ";
+                cin.ignore();
+                getline(cin, nombre);
+                cout << "Ingrese la marca del repuesto: ";
+                getline(cin, marca);
+                cout << "Ingrese el modelo del repuesto: ";
+                getline(cin, modelo);
+                cout << "Ingrese el modelo del carro para el que es el repuesto: ";
+                getline(cin, modeloCarro);
+                cout << "Ingrese el año del carro: ";
+                cin >> anioCarro;
+                cout << "Ingrese el precio del repuesto: ";
+                cin >> precio;
+                cout << "Ingrese las existencias: ";
+                cin >> existencias;
 
-    // Configurar el nuevo objeto Repuesto con los datos ingresados
-    nuevoRepuesto.setNombre(nombre);
-    nuevoRepuesto.setMarca(marca);
-    nuevoRepuesto.setModelo(modelo);
-    nuevoRepuesto.setModeloCarro(modeloCarro);
-    nuevoRepuesto.setAnioCarro(anioCarro);
-    nuevoRepuesto.setPrecio(precio);
-    nuevoRepuesto.setExistencias(existencias);
+                // Configurar el nuevo objeto Repuesto con los datos ingresados
+                nuevoRepuesto.setNombre(nombre);
+                nuevoRepuesto.setMarca(marca);
+                nuevoRepuesto.setModelo(modelo);
+                nuevoRepuesto.setModeloCarro(modeloCarro);
+                nuevoRepuesto.setAnioCarro(anioCarro);
+                nuevoRepuesto.setPrecio(precio);
+                nuevoRepuesto.setExistencias(existencias);
 
-    // Agregar el nuevo repuesto
-    Repuesto::agregarRepuesto(repuestos, cantidadRepuestos, nuevoRepuesto);
-                
+                // Agregar el nuevo repuesto
+                Repuesto::agregarRepuesto(repuestos, cantidadRepuestos, nuevoRepuesto);
+                cout<<endl;
                 break;
 
                 case 2:
@@ -485,6 +490,7 @@ break;
                 cout<<"Ingrese el year del carro del repuesto: ";
                 cin>>anioCarro;
                 Repuesto::consultarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                cout<<endl;
                 break;
 
                 case 3:
@@ -495,6 +501,7 @@ break;
                 cout<<"Ingrese el year del carro del repuesto: ";
                 cin>>anioCarro;
                 Repuesto::borrarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                cout<<endl;
                 break;
 
                 case 4:
@@ -505,15 +512,17 @@ break;
                 cout<<"Ingrese el year del carro del repuesto: ";
                 cin>>anioCarro;
                 Repuesto::modificarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                cout<<endl;
                 break;
 
                 case 5:
                 Repuesto::leerListaRepuestos(repuestos, cantidadRepuestos);
+                cout<<endl;
                 break;
 
-case 0:
-cout<<"Volviendo al menu";
-break;
+                case 0:
+                cout<<"Volviendo al menu"<<endl;
+                break;
 
                 default:
                 cout<<"Opcion invalida"<<endl;
@@ -530,21 +539,21 @@ break;
                 cin>>op2;
                 switch(op2){
                 case 1:
-                     cout<<"Ingrese la cedula del cliente: ";
-                    cin>>cedula;
-                    cout<<"Ingrese el nombre del cliente: ";
-                    cin>>name;
-                    cout<<"Ingrese el apellido del cliente: ";
-                    cin>>apellido;
-                    cout<<"Ingrese el email del cliente: ";
-                    cin>>email;
-                    cout<<"Ingrese la cantidad de vehiculos rentados por el cliente: ";
-                    cin>>cantidadVehiculosRent;
-                    cout<<"Ingrese la direccion del cliente: ";
-                    cin.ignore();
-                    getline(cin,direccion);
-                    cout<<"Ingrese si el cliente esta activo (1, si - 0, no): ";
-                    cin>>act;
+                cout<<"Ingrese la cedula del cliente: ";
+                cin>>cedula;
+                cout<<"Ingrese el nombre del cliente: ";
+                cin>>name;
+                cout<<"Ingrese el apellido del cliente: ";
+                cin>>apellido;
+                cout<<"Ingrese el email del cliente: ";
+                cin>>email;
+                cout<<"Ingrese la cantidad de vehiculos rentados por el cliente: ";
+                cin>>cantidadVehiculosRent;
+                cout<<"Ingrese la direccion del cliente: ";
+                cin.ignore();
+                getline(cin,direccion);
+                cout<<"Ingrese si el cliente esta activo (1, si - 0, no): ";
+                cin>>act;
 
                     nuevoCliente.setNombre(name);
                     nuevoCliente.setApellido(apellido);
@@ -555,9 +564,9 @@ break;
                     nuevoCliente.setActivo(act);
 
                     Cliente::agregarCliente(clientes, cantidadClientes, nuevoCliente);
-                    
-               
+                    cout<<endl;
                 break;
+
                 case 2:
                 cout<<"Ingrese la cedula del cliente que desea consultar: ";
                 cin>>cedula;
@@ -570,12 +579,14 @@ break;
                 cout<<"Ingrese la cedula del cliente que quiere borrar: ";
                 cin>>cedula;
                 Cliente::borrarCliente(clientes, cantidadClientes, cedula);
+                cout<<endl;
                 break;
 
                 case 4:
                 cout<<"Ingrese la cedula del cliente a buscar: ";
                 cin>>cedula;
                 Cliente::modificarCliente(clientes, cantidadClientes, cedula);
+                cout<<endl;
                 break;
 
                 case 5:
@@ -616,6 +627,7 @@ break;
                 cout<<"Ingrese la placa del vehiculo que desea consultar: ";
                 cin>>placa;
                 Vehiculo::consultarVehiculo(vehiculo, cantidadVehiculos, placa);
+                cout<<endl;
                 break;
 
                 case 2:
@@ -626,6 +638,7 @@ break;
                 cout<<"Ingrese el year del carro del repuesto: ";
                 cin>>anioCarro;
                 Repuesto::consultarRepuesto(repuestos, cantidadRepuestos, nombre, modeloCarro, anioCarro);
+                cout<<endl;
                 break;
 
                 case 3:
@@ -641,10 +654,10 @@ break;
                 break;
 
                 case 0:
-                cout<<"Saliendo.";
+                cout<<"Saliendo."<<endl;
 
                 default:
-                cout<<"Opcion invalida";
+                cout<<"Opcion invalida"<<endl;
                 break;
             }
         }while(op1!=0);
