@@ -15,7 +15,25 @@ private:
     float precio;
 
 public:
-    Repuesto(); // Constructor por defecto
+Repuesto() : nombre(""), modelo(""), marca(""), modelo_carro(""), anio_carro(0), existencias(0), precio(0.0) {}
+
+    // Getters
+    string getNombre() const { return nombre; }
+    string getModelo() const { return modelo; }
+    string getMarca() const { return marca; }
+    string getModeloCarro() const { return modelo_carro; }
+    int getAnioCarro() const { return anio_carro; }
+    int getExistencias() const { return existencias; }
+    float getPrecio() const { return precio; }
+
+    // Setters
+    void setNombre(const string& n) { nombre = n; }
+    void setModelo(const string& m) { modelo = m; }
+    void setMarca(const string& ma) { marca = ma; }
+    void setModeloCarro(const string& mc) { modelo_carro = mc; }
+    void setAnioCarro(int ac) { anio_carro = ac; }
+    void setExistencias(int e) { existencias = e; }
+    void setPrecio(float p) { precio = p; }
 
     // Funciones de archivo
     static Repuesto* cargarRepuestos(int& cantidad);

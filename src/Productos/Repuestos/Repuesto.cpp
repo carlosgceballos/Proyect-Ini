@@ -6,8 +6,6 @@
 
 using namespace std;
 
-Repuesto::Repuesto() {}
-
 // Función para cargar repuestos desde el archivo
 Repuesto* Repuesto::cargarRepuestos(int& cantidad) {
     ifstream archivo("bin/datos/repuestos.csv");

@@ -5,8 +5,6 @@
 
 using namespace std;
 
-Vehiculo::Vehiculo() {}
-
 // Función para cargar vehículos desde el archivo
 Vehiculo* Vehiculo::cargarVehiculos(int& cantidad) {
     ifstream archivo("bin/datos/vehiculos.csv");
