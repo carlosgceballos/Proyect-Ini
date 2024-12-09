@@ -13,10 +13,34 @@
 
 using namespace std;
 
+
+
 int main() {
     int cantidadUsuarios = 0, cantidadVehiculos = 0, cantidadRepuestos = 0, cantidadClientes = 0;
     int op1, op2;
+
+    //var multiusos
+    bool act;
+    int cedula, ced_cli;
+    float precio;
+    string marca;
+
+    //var para vehiculos
+    string model, color, motor, fechaentrega;
+    int year, kmj;
+
+    //var para clientes
+    string name, apellido, email, direccion;
+    int cantidadVehiculosRent;
+
+    //var para repuesto
+    string nombre, modelo, modeloCarro;
+    int inputInt;
+    int anioCarro, existencias;
+
     Vehiculo nuevoVehiculo;
+    Repuesto nuevoRepuesto;
+    Cliente nuevoCliente;
     
 // Cargar datos desde archivos
 Usuario** usuarios = Usuario::cargarUsuarios(cantidadUsuarios);
@@ -84,8 +108,47 @@ Usuario* usuarioAutenticado = nullptr;
             menuVehiculos();
             cin>>op2;
             switch(op2){
-                case 1:{
-                }
+                case 1:
+                    cout<<"Ingrese el modelo del vehiculo: ";
+                    cin.ignore();
+                    getline(cin, model);
+                    cout<<"Ingrese la marca del vehiculo: ";
+                    cin>>marca;
+                    cout<<"Ingrese el year del vehiculo: ";
+                    cin>>year;
+                    cout<<"Ingrese la placa: ";
+                    cin>>placa;
+                    cout<<"Ingrese el color: ";
+                    cin>>color;
+                    cout<<"Ingrese el tipo de motor: ";
+                    cin>>motor;
+                    cout<<"Ingrese el kilomeraje: ";
+                    cin>>kmj;
+                    cout<<"Ingrese el precio de renta: ";
+                    cin>>precio;
+                    cout<<"El vehiculo esta rentado (1-si, 0-no): ";
+                    cin>>act;
+                    if(act==1){
+                        cout<<"Cedula del cliente que renta: ";
+                        cin>>ced_cli;
+                        cout<<"Fecha de entrega: ";
+                        cin>>fechaentrega;
+                    }else{
+                        ced_cli = 0;
+                        fechaentrega = "N/A";
+                    }
+                    nuevoVehiculo.setCedCliente(ced_cli);
+                    nuevoVehiculo.setColor(color);
+                    nuevoVehiculo.setFechaEntrega(fechaentrega);
+                    nuevoVehiculo.setKilometraje(kmj);
+                    nuevoVehiculo.setMarca(marca);
+                    nuevoVehiculo.setModelo(model);
+                    nuevoVehiculo.setMotor(motor);
+                    nuevoVehiculo.setPlaca(placa);
+                    nuevoVehiculo.setPrecioRenta(precio);
+                    nuevoVehiculo.setRentado(act);
+                    nuevoVehiculo.setYear(year);
+                    Vehiculo::agregarVehiculo(vehiculo,cantidadVehiculos,nuevoVehiculo);
                 break;
 
                 case 2:
@@ -130,7 +193,33 @@ Usuario* usuarioAutenticado = nullptr;
             cin>>op2;
             switch(op2){
                 case 1:
-                //agregar
+                cout << "Ingrese el nombre del repuesto: ";
+    cin.ignore();
+    getline(cin, nombre);
+    cout << "Ingrese la marca del repuesto: ";
+    getline(cin, marca);
+    cout << "Ingrese el modelo del repuesto: ";
+    getline(cin, modelo);
+    cout << "Ingrese el modelo del carro para el que es el repuesto: ";
+    getline(cin, modeloCarro);
+    cout << "Ingrese el año del carro: ";
+    cin >> anioCarro;
+    cout << "Ingrese el precio del repuesto: ";
+    cin >> precio;
+    cout << "Ingrese las existencias: ";
+    cin >> existencias;
+
+    // Configurar el nuevo objeto Repuesto con los datos ingresados
+    nuevoRepuesto.setNombre(nombre);
+    nuevoRepuesto.setMarca(marca);
+    nuevoRepuesto.setModelo(modelo);
+    nuevoRepuesto.setModeloCarro(modeloCarro);
+    nuevoRepuesto.setAnioCarro(anioCarro);
+    nuevoRepuesto.setPrecio(precio);
+    nuevoRepuesto.setExistencias(existencias);
+
+    // Agregar el nuevo repuesto
+    Repuesto::agregarRepuesto(repuestos, cantidadRepuestos, nuevoRepuesto);
                 break;
 
                 case 2:
@@ -178,8 +267,6 @@ break;
             break;
 
             case 4:
-            //clientes
-            int cedula;
             cout<<endl;
             do{
             menuClientes();
@@ -187,6 +274,33 @@ break;
             cout<<endl;
             switch(op2){
                 case 1:{
+                    cout<<"Ingrese la cedula del cliente: ";
+                    cin>>cedula;
+                    cout<<"Ingrese el nombre del cliente: ";
+                    cin>>name;
+                    cout<<"Ingrese el apellido del cliente: ";
+                    cin>>apellido;
+                    cout<<"Ingrese el email del cliente: ";
+                    cin>>email;
+                    cout<<"Ingrese la cantidad de vehiculos rentados por el cliente: ";
+                    cin>>cantidadVehiculosRent;
+                    cout<<"Ingrese la direccion del cliente: ";
+                    cin.ignore();
+                    getline(cin,direccion);
+                    cout<<"Ingrese si el cliente esta activo (1, si - 0, no): ";
+                    cin>>act;
+
+                    nuevoCliente.setNombre(name);
+                    nuevoCliente.setApellido(apellido);
+                    nuevoCliente.setCedula(cedula);
+                    nuevoCliente.setEmail(email);
+                    nuevoCliente.setDireccion(direccion);
+                    nuevoCliente.setCantidadVehiculosRentados(cantidadVehiculosRent);
+                    nuevoCliente.setActivo(act);
+
+                    Cliente::agregarCliente(clientes, cantidadClientes, nuevoCliente);
+                    
+
                 break;
                 }
                 case 2:
@@ -246,8 +360,47 @@ break;
                 cin>>op2;
                 cout<<endl;
                 switch(op2){
-                case 1:{
-                }
+                case 1:
+                cout<<"Ingrese el modelo del vehiculo: ";
+                    cin.ignore();
+                    getline(cin, model);
+                    cout<<"Ingrese la marca del vehiculo: ";
+                    cin>>marca;
+                    cout<<"Ingrese el year del vehiculo: ";
+                    cin>>year;
+                    cout<<"Ingrese la placa: ";
+                    cin>>placa;
+                    cout<<"Ingrese el color: ";
+                    cin>>color;
+                    cout<<"Ingrese el tipo de motor: ";
+                    cin>>motor;
+                    cout<<"Ingrese el kilomeraje: ";
+                    cin>>kmj;
+                    cout<<"Ingrese el precio de renta: ";
+                    cin>>precio;
+                    cout<<"El vehiculo esta rentado (1-si, 0-no): ";
+                    cin>>act;
+                    if(act==1){
+                        cout<<"Cedula del cliente que renta: ";
+                        cin>>ced_cli;
+                        cout<<"Fecha de entrega: ";
+                        cin>>fechaentrega;
+                    }else{
+                        ced_cli = 0;
+                        fechaentrega = "N/A";
+                    }
+                    nuevoVehiculo.setCedCliente(ced_cli);
+                    nuevoVehiculo.setColor(color);
+                    nuevoVehiculo.setFechaEntrega(fechaentrega);
+                    nuevoVehiculo.setKilometraje(kmj);
+                    nuevoVehiculo.setMarca(marca);
+                    nuevoVehiculo.setModelo(model);
+                    nuevoVehiculo.setMotor(motor);
+                    nuevoVehiculo.setPlaca(placa);
+                    nuevoVehiculo.setPrecioRenta(precio);
+                    nuevoVehiculo.setRentado(act);
+                    nuevoVehiculo.setYear(year);
+                    Vehiculo::agregarVehiculo(vehiculo,cantidadVehiculos,nuevoVehiculo);
                 break;
 
                 case 2:
@@ -294,7 +447,34 @@ break;
                 cout<<endl;
                 switch(op2){
                     case 1:
-                //agregar
+                                    cout << "Ingrese el nombre del repuesto: ";
+    cin.ignore();
+    getline(cin, nombre);
+    cout << "Ingrese la marca del repuesto: ";
+    getline(cin, marca);
+    cout << "Ingrese el modelo del repuesto: ";
+    getline(cin, modelo);
+    cout << "Ingrese el modelo del carro para el que es el repuesto: ";
+    getline(cin, modeloCarro);
+    cout << "Ingrese el año del carro: ";
+    cin >> anioCarro;
+    cout << "Ingrese el precio del repuesto: ";
+    cin >> precio;
+    cout << "Ingrese las existencias: ";
+    cin >> existencias;
+
+    // Configurar el nuevo objeto Repuesto con los datos ingresados
+    nuevoRepuesto.setNombre(nombre);
+    nuevoRepuesto.setMarca(marca);
+    nuevoRepuesto.setModelo(modelo);
+    nuevoRepuesto.setModeloCarro(modeloCarro);
+    nuevoRepuesto.setAnioCarro(anioCarro);
+    nuevoRepuesto.setPrecio(precio);
+    nuevoRepuesto.setExistencias(existencias);
+
+    // Agregar el nuevo repuesto
+    Repuesto::agregarRepuesto(repuestos, cantidadRepuestos, nuevoRepuesto);
+                
                 break;
 
                 case 2:
@@ -349,9 +529,35 @@ break;
                 menuClientes();
                 cin>>op2;
                 switch(op2){
-case 1:{
+                case 1:
+                     cout<<"Ingrese la cedula del cliente: ";
+                    cin>>cedula;
+                    cout<<"Ingrese el nombre del cliente: ";
+                    cin>>name;
+                    cout<<"Ingrese el apellido del cliente: ";
+                    cin>>apellido;
+                    cout<<"Ingrese el email del cliente: ";
+                    cin>>email;
+                    cout<<"Ingrese la cantidad de vehiculos rentados por el cliente: ";
+                    cin>>cantidadVehiculosRent;
+                    cout<<"Ingrese la direccion del cliente: ";
+                    cin.ignore();
+                    getline(cin,direccion);
+                    cout<<"Ingrese si el cliente esta activo (1, si - 0, no): ";
+                    cin>>act;
+
+                    nuevoCliente.setNombre(name);
+                    nuevoCliente.setApellido(apellido);
+                    nuevoCliente.setCedula(cedula);
+                    nuevoCliente.setEmail(email);
+                    nuevoCliente.setDireccion(direccion);
+                    nuevoCliente.setCantidadVehiculosRentados(cantidadVehiculosRent);
+                    nuevoCliente.setActivo(act);
+
+                    Cliente::agregarCliente(clientes, cantidadClientes, nuevoCliente);
+                    
+               
                 break;
-                }
                 case 2:
                 cout<<"Ingrese la cedula del cliente que desea consultar: ";
                 cin>>cedula;

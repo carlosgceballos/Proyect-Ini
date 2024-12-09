@@ -53,25 +53,37 @@ void Cliente::guardarClientes(Cliente* clientes, int cantidad) {
     archivo.close();
 }
 
-
 void Cliente::agregarCliente(Cliente*& clientes, int& cantidad, const Cliente& nuevoCliente) {
-    // Creamos un archivo temporal
-    ofstream archivoTemp("bin/datos/clientes_temp.csv", ios::app);
+    // Crear un archivo temporal en modo de escritura
+    ofstream archivoTemp("bin/datos/clientes_temp.csv");
     if (!archivoTemp.is_open()) {
         cout << "Error al abrir el archivo temporal.\n";
         return;
     }
+
+    // Guardar los clientes existentes en el archivo temporal
     for (int i = 0; i < cantidad; i++) {
-        archivoTemp << clientes[i].cedula << "," << clientes[i].nombre << "," << clientes[i].apellido << ","
-                << clientes[i].email << "," << clientes[i].cantidad_vehiculos_rentados << ","
-                << clientes[i].direccion << "," << clientes[i].activo << "\n";
+        archivoTemp << clientes[i].getCedula() << "," 
+                    << clientes[i].getNombre() << "," 
+                    << clientes[i].getApellido() << "," 
+                    << clientes[i].getEmail() << "," 
+                    << clientes[i].getCantidadVehiculosRentados() << "," 
+                    << clientes[i].getDireccion() << "," 
+                    << clientes[i].isActivo() << "\n";
     }
-    archivoTemp << nuevoCliente.cedula << "," << nuevoCliente.nombre << "," << nuevoCliente.apellido << ","
-                << nuevoCliente.email << "," << nuevoCliente.cantidad_vehiculos_rentados << ","
-                << nuevoCliente.direccion << "," << nuevoCliente.activo << "\n";
+
+    // Agregar el nuevo cliente al archivo temporal
+    archivoTemp << nuevoCliente.getCedula() << "," 
+                << nuevoCliente.getNombre() << "," 
+                << nuevoCliente.getApellido() << "," 
+                << nuevoCliente.getEmail() << "," 
+                << nuevoCliente.getCantidadVehiculosRentados() << "," 
+                << nuevoCliente.getDireccion() << "," 
+                << nuevoCliente.isActivo() << "\n";
 
     archivoTemp.close();
 
+    // Confirmación del usuario
     int confirmar;
     cout << "¿Desea confirmar los cambios? (1 para confirmar, 0 para cancelar): ";
     cin >> confirmar;
@@ -81,7 +93,17 @@ void Cliente::agregarCliente(Cliente*& clientes, int& cantidad, const Cliente& n
         remove("bin/datos/clientes.csv");
         rename("bin/datos/clientes_temp.csv", "bin/datos/clientes.csv");
         cout << "Cliente agregado exitosamente.\n";
-        cantidad++; 
+
+        // Actualizar la memoria dinámica
+        Cliente* temp = new Cliente[cantidad + 1];
+        for (int i = 0; i < cantidad; i++) {
+            temp[i] = clientes[i];
+        }
+        temp[cantidad] = nuevoCliente;
+
+        delete[] clientes;
+        clientes = temp;
+        cantidad++;
     } else {
         // Si no se confirma, eliminamos el archivo temporal
         remove("bin/datos/clientes_temp.csv");
