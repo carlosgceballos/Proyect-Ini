@@ -13,7 +13,6 @@
 
 using namespace std;
 
-
 int main() {
     int cantidadUsuarios = 0, cantidadVehiculos = 0, cantidadRepuestos = 0, cantidadClientes = 0;
     int op1, op2;

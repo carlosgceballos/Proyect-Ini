@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 Cliente* Cliente::cargarClientes(int& cantidad){
     ifstream archivo("bin/datos/clientes.csv");
     if (!archivo.is_open()) {

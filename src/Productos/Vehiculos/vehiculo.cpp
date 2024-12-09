@@ -61,18 +61,73 @@ void Vehiculo::guardarVehiculos(Vehiculo* vehiculos, int cantidad) {
     archivo.close();
 }
 
-// Función para agregar un vehículo
 void Vehiculo::agregarVehiculo(Vehiculo*& vehiculos, int& cantidad, const Vehiculo& nuevoVehiculo) {
-    Vehiculo* temp = new Vehiculo[cantidad + 1];
-    for (int i = 0; i < cantidad; i++) {
-        temp[i] = vehiculos[i];
+    // Crear un archivo temporal en modo de escritura
+    ofstream archivoTemp("bin/datos/vehiculos_temp.csv");
+    if (!archivoTemp.is_open()) {
+        cout << "Error al abrir el archivo temporal.\n";
+        return;
     }
 
-    temp[cantidad] = nuevoVehiculo;
-    delete[] vehiculos;
-    vehiculos = temp;
-    cantidad++;
+    // Guardar los vehículos existentes en el archivo temporal
+    for (int i = 0; i < cantidad; i++) {
+        archivoTemp << vehiculos[i].getPlaca() << "," 
+                    << vehiculos[i].getModelo() << "," 
+                    << vehiculos[i].getMarca() << "," 
+                    << vehiculos[i].getColor() << "," 
+                    << vehiculos[i].getYear() << "," 
+                    << vehiculos[i].getKilometraje() << "," 
+                    << vehiculos[i].isRentado() << "," 
+                    << vehiculos[i].getMotor() << "," 
+                    << vehiculos[i].getPrecioRenta() << "," 
+                    << vehiculos[i].getCedCliente() << "," 
+                    << vehiculos[i].getFechaEntrega() << "\n";
+    }
+
+    // Agregar el nuevo vehículo al archivo temporal
+    archivoTemp << nuevoVehiculo.getPlaca() << "," 
+                << nuevoVehiculo.getModelo() << "," 
+                << nuevoVehiculo.getMarca() << "," 
+                << nuevoVehiculo.getColor() << "," 
+                << nuevoVehiculo.getYear() << "," 
+                << nuevoVehiculo.getKilometraje() << "," 
+                << nuevoVehiculo.isRentado() << "," 
+                << nuevoVehiculo.getMotor() << "," 
+                << nuevoVehiculo.getPrecioRenta() << "," 
+                << nuevoVehiculo.getCedCliente() << "," 
+                << nuevoVehiculo.getFechaEntrega() << "\n";
+
+    archivoTemp.close();
+
+    // Confirmación del usuario
+    int confirmar;
+    cout << "¿Desea confirmar los cambios? (1 para confirmar, 0 para cancelar): ";
+    cin >> confirmar;
+
+    if (confirmar == 1) {
+        // Eliminar el archivo original y renombrar el archivo temporal
+        remove("bin/datos/vehiculos.csv");
+        rename("bin/datos/vehiculos_temp.csv", "bin/datos/vehiculos.csv");
+        cout << "Vehículo agregado exitosamente.\n";
+
+        // Actualizar la memoria dinámica
+        Vehiculo* temp = new Vehiculo[cantidad + 1];
+        for (int i = 0; i < cantidad; i++) {
+            temp[i] = vehiculos[i];
+        }
+        temp[cantidad] = nuevoVehiculo;
+
+        delete[] vehiculos;
+        vehiculos = temp;
+        cantidad++;
+    } else {
+        // Si no se confirma, eliminamos el archivo temporal
+        remove("bin/datos/vehiculos_temp.csv");
+        cout << "Operación cancelada. No se realizaron cambios.\n";
+    }
 }
+
+
 
 // Función para consultar un vehículo por placa
 void Vehiculo::consultarVehiculo(Vehiculo* vehiculos, int cantidad, const string& placa) {
